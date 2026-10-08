@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  protutech-docs:
+    image: squidfunk/mkdocs-material:latest
+    container_name: protutech-docs
+    restart: unless-stopped
+    ports:
+      - "8085:8000"
+    volumes:
+      - .:/docs
+    command: serve --dev-addr=0.0.0.0:8000
+    environment:
+      - TZ=America/Los_Angeles
