@@ -1,6 +1,6 @@
 # ProtutechChat Services & State Machine
 
-## 🔄 The Realtime Synchronization Engine
+## ▸ The Realtime Synchronization Engine
 
 In standard web applications, clients pull data on demand. In ProtutechChat, communication must feel instantaneous. The client employs a continuous **Sliding-Sync / Long Polling loop** paired with an in memory cache to maintain snappy UI performance even across large servers with thousands of messages.
 
@@ -30,7 +30,7 @@ sequenceDiagram
 
 ---
 
-## 💡 How Long Polling Works (Explained Simply)
+## ✦ How Long Polling Works (Explained Simply)
 
 Imagine sitting in a quiet room waiting for a letter. 
 - **The inefficient way (Polling)**: You run outside to your mailbox every 2 seconds, check if it's empty, and run back inside. This wastes energy and wears out your door.
@@ -38,7 +38,7 @@ Imagine sitting in a quiet room waiting for a letter.
 
 ---
 
-## 🏛️ In Memory Architecture & Data Structures
+## ⬡ In Memory Architecture & Data Structures
 
 | Data Structure | Type | Purpose |
 | :--- | :--- | :--- |
@@ -49,6 +49,6 @@ Imagine sitting in a quiet room waiting for a letter.
 
 ---
 
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 The internal state machine incorporates dynamic message normalization layers. Incoming raw protocol envelopes (containing diverse event types like `m.room.message`, `m.room.redaction`, and `m.presence`) are passed through an internal mapping transformer that converts them into streamlined interface representations before passing them to the React component tree. Raw wire schemas are never exposed directly to external client plugins.

@@ -1,16 +1,16 @@
 # CS2 Tactical Stratbook Physics Engine & Coordinate Math
 
-## 🧮 Coordinate Transformation Engine
+## § Coordinate Transformation Engine
 
 Counter-Strike 2 represents world space using a 3D Cartesian coordinate system measured in Source Engine Hammer units ($1 \text{ unit} \approx 0.75 \text{ inches}$). In contrast, the tactical web radar renders onto a 2D surface normalized from $0\%$ to $100\%$.
 
 ```mermaid
 graph LR
-    subgraph ValveWorld["🎮 CS2 World Space (3D Units)"]
+    subgraph ValveWorld["▸ CS2 World Space (3D Units)"]
         WorldCoord["Vector3 (X: -3230, Y: 1713, Z: -160)"]
     end
 
-    subgraph CalibrationConfig["📐 Valve Map Overview Calibration"]
+    subgraph CalibrationConfig["§ Valve Map Overview Calibration"]
         Config["pos_x, pos_y, scale (e.g. Mirage scale: 5.0)"]
     end
 
@@ -19,7 +19,7 @@ graph LR
         PixelY["pixelY = (pos_y - worldY) / scale"]
     end
 
-    subgraph WebNormalized["🌐 Web Radar Space (Percentages)"]
+    subgraph WebNormalized["▸ Web Radar Space (Percentages)"]
         PctX["pctX = (pixelX / 1024) * 100%"]
         PctY["pctY = (pixelY / 1024) * 100%"]
     end
@@ -31,7 +31,7 @@ graph LR
 
 ---
 
-## 📐 Mathematical Formulas
+## § Mathematical Formulas
 
 ### 1. World to Radar Conversion (`worldToRadarCoords`)
 Given in-game coordinates $(X_w, Y_w)$, and map calibration constants $(P_x, P_y, S)$:
@@ -59,7 +59,7 @@ $$Y_w = P_y - (\text{pixel}_y \times S)$$
 
 ---
 
-## 🎯 Official Valve Map Calibration Parameters
+## ◆ Official Valve Map Calibration Parameters
 
 Extracted directly from Valve game files (`csgo/resource/overviews/*.txt`):
 
@@ -77,7 +77,7 @@ Extracted directly from Valve game files (`csgo/resource/overviews/*.txt`):
 
 ---
 
-## 🚀 Parabolic Trajectory Physics (Cubic Bézier Approximation)
+## ▸ Parabolic Trajectory Physics (Cubic Bézier Approximation)
 
 In Counter-Strike 2, grenade flight paths follow gravitational projectile motion with drag and bounce energy attenuation. On the 2D tactical board, this flight arc is approximated using cubic Bézier curves:
 

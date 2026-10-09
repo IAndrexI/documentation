@@ -1,6 +1,6 @@
 # ProtutechDash Security Guard & Protocol Subsystem
 
-## 🛡️ Security Architecture
+## [#] Security Architecture
 
 The Protutech homelab dashboard features client-side integrity protection and sandboxed desktop invocation to prevent inspection, unauthorized modification, and malicious payload execution.
 
@@ -37,7 +37,7 @@ sequenceDiagram
 
 ---
 
-## 🔒 Security Guard Capabilities (`src/security-guard.js`)
+## [#] Security Guard Capabilities (`src/security-guard.js`)
 
 ### 1. Key Combination Interception
 The guard intercepts physical keyboard inputs at the `capture` phase of event propagation:
@@ -61,7 +61,7 @@ Detects docked devtools panels by measuring the delta between `window.outerWidth
 
 ---
 
-## ⚡ Native Protocol Bridge (`desktop/protutech-bridge.js`)
+## ▸ Native Protocol Bridge (`desktop/protutech-bridge.js`)
 
 ### Registry Registration
 The batch script `desktop/protutech-protocol.bat` installs a custom URI handler in Windows Registry:

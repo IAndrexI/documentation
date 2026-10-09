@@ -1,6 +1,6 @@
 # aiVault Mem0 Vector Memory & Qdrant RAG
 
-## 🧠 Cognitive Long Term Memory Architecture
+## ◆ Cognitive Long Term Memory Architecture
 
 Standard LLMs suffer from "context amnesia": once a conversation window slides forward or a session resets, prior instructions and knowledge disappear. **aiVault** integrates **Mem0** and **Qdrant** to deliver self-updating, persistent episodic memory.
 
@@ -30,7 +30,7 @@ sequenceDiagram
 
 ---
 
-## 💡 How Vector Memory Works (Explained Simply)
+## ✦ How Vector Memory Works (Explained Simply)
 
 Imagine words as books in a library:
 - **Alphabetical Indexing (Keyword Search)**: If you search for "automobile", you only find books with the exact word "automobile". A book titled "fast cars" would be missed because the spelling is different.
@@ -39,7 +39,7 @@ Imagine words as books in a library:
 
 ---
 
-## ⚙️ Core Technical Configuration
+## § Core Technical Configuration
 
 | Component | Technology | Role |
 | :--- | :--- | :--- |
@@ -50,6 +50,6 @@ Imagine words as books in a library:
 
 ---
 
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 The exact similarity metric scoring thresholds, clustering algorithms, and vector space pruning routines are configured with proprietary dynamic damping factors. Model fine-tuning parameters and prompt extraction templates are abstracted inside container memory spaces.

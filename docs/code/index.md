@@ -1,32 +1,32 @@
 # Codebase Deep Dive: File & Key Line Explorer
 
-## 🧭 Master Code Atlas
+## ▸ Master Code Atlas
 
 This dedicated engineering directory provides an exhaustive, file by file exploration of the source code across the entire Protutech ecosystem. Every guide breaks down the core algorithms, state loops, and critical lines of code, paired with beginner-friendly mental models and protective architectural abstraction.
 
 ```mermaid
 graph TD
-    subgraph SuiteLauncher["🚀 ProtutechDash"]
+    subgraph SuiteLauncher["▸ ProtutechDash"]
         D1["src/app.js (Main Controller)"]
         D2["src/security-guard.js (Antitamper Shield)"]
         D3["desktop/protutech-bridge.js (Native URI Bridge)"]
         D4["scripts/obfuscate.js (AST Protection Pipeline)"]
     end
 
-    subgraph TacticalRadar["🎯 CS2 Tactical Stratbook"]
+    subgraph TacticalRadar["◆ CS2 Tactical Stratbook"]
         C1["src/composables/useCanvas.ts (Bézier Trajectory Engine)"]
         C2["src/utils/coordinateMapper.ts (Matrix Space Transformation)"]
         C3["src/stores/gameRoomStore.ts (Pinia WebSocket Room)"]
         C4["server/server.js (Collaboration WebSocket Daemon)"]
     end
 
-    subgraph SecureChat["💬 ProtutechChat"]
+    subgraph SecureChat["● ProtutechChat"]
         M1["src/services/matrix.ts (Decentralized State Sync)"]
         M2["src/services/livekit.ts (Ultra-Low Latency Audio Engine)"]
         M3["electron/main.cjs (Native Host & Loopback Capture)"]
     end
 
-    subgraph AIAndSecurity["⚡ aiVault & Multidrive Vault"]
+    subgraph AIAndSecurity["▸ aiVault & Multidrive Vault"]
         A1["server.py (Mem0 Vector Memory Gateway)"]
         A2["docker-compose.yml (Distributed AI Cluster)"]
         S1["envelope_manager.js (AES-256-GCM Cryptographic Vault)"]
@@ -37,7 +37,7 @@ graph TD
 
 ---
 
-## 📚 Master File Index
+## ▪ Master File Index
 
 | File Reference | Subsystem | Language / Stack | Core Responsibility |
 | :--- | :--- | :--- | :--- |

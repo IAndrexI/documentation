@@ -6,13 +6,15 @@ This documentation site provides deep architectural breakdowns, system topologie
 
 ---
 
-## 🏛️ Ecosystem Overview
+## ⬡ Ecosystem Architecture & Topology
+
+<img src="assets/system-topology.svg" alt="Protutech Enterprise Homelab Architecture" class="overview-architecture-img" />
 
 ```mermaid
 graph TD
-    User["🌐 User / Client (Web & Mobile)"] -->|Cloudflare Argo Tunnel| CF["🛡️ Cloudflare Zero Trust Edge"]
+    User["User / Client (Web & Mobile)"] -->|Cloudflare Argo Tunnel| CF["Cloudflare Zero Trust Edge"]
     
-    subgraph ProxmoxVE["🖥️ Proxmox VE 9.2.11 Hypervisor Node"]
+    subgraph ProxmoxVE["Proxmox VE 9.2.11 Hypervisor Node"]
         CF --> NginxIngress["Reverse Proxy & SSL Gateway"]
         
         subgraph LXC_Core["LXC 100: Core Services"]
@@ -40,7 +42,7 @@ graph TD
         end
     end
 
-    subgraph GPU_Node["⚡ Dedicated Workstation Node"]
+    subgraph GPU_Node["Dedicated Workstation Node"]
         aiVault -->|Low Latency LAN 2.5GbE| Ollama["Ollama CUDA Daemon"]
         Dash -->|Custom URI protutech://| Bridge["Local Companion Daemon"]
     end
@@ -48,63 +50,63 @@ graph TD
 
 ---
 
-## 🚀 Quick Navigation
+## ⬡ Quick Navigation
 
 <div class="grid cards" markdown>
 
--   :material-view-dashboard:{ .lg .middle } **Protutech Suite Dashboard**
+-   ▸ **Protutech Suite Dashboard**
 
     ---
 
     Unified cross platform Adobe Creative Cloud style launcher, periodic table cockpit, and custom protocol dispatcher.
 
-    [:octicons-arrow-right-24: View Architecture](apps/protutechdash/index.md)
+    [▸ View Architecture](apps/protutechdash/index.md)
 
--   :material-crosshairs-gps:{ .lg .middle } **CS2 Tactical Stratbook**
+-   ▸ **CS2 Tactical Stratbook**
 
     ---
 
     Realtime interactive tactical whiteboard, vector trajectory physics engine, and lineup sync for Counter-Strike 2.
 
-    [:octicons-arrow-right-24: View Breakdown](apps/cs2nades/index.md)
+    [▸ View Breakdown](apps/cs2nades/index.md)
 
--   :material-chat-processing:{ .lg .middle } **ProtutechChat & Voice Engine**
+-   ▸ **ProtutechChat & Voice Engine**
 
     ---
 
     Decentralized Matrix communication hub paired with studio grade LiveKit WebRTC audio and Electron host.
 
-    [:octicons-arrow-right-24: View Platform](apps/protutechchat/index.md)
+    [▸ View Platform](apps/protutechchat/index.md)
 
--   :material-robot:{ .lg .middle } **aiVault & Ollama Pipeline**
+-   ▸ **aiVault & Ollama Pipeline**
 
     ---
 
     Distributed local LLM pipeline routing containerized OpenWebUI to remote workstation GPU compute with Qdrant vector memory.
 
-    [:octicons-arrow-right-24: View Pipeline](apps/aivault/index.md)
+    [▸ View Pipeline](apps/aivault/index.md)
 
--   :material-shield-lock:{ .lg .middle } **Security & Envelope Encryption**
+-   ▸ **Security & Envelope Encryption**
 
     ---
 
     Double layer AES-256-GCM envelope encryption, client side anti inspection guards, and multidrive backups.
 
-    [:octicons-arrow-right-24: View Security Model](infra/security.md)
+    [▸ View Security Model](infra/security.md)
 
--   :material-code-tags:{ .lg .middle } **Source Code Deep Dive**
+-   ▸ **Source Code Deep Dive**
 
     ---
 
     File by file technical walkthroughs explaining key lines of code, algorithms, and protective architecture.
 
-    [:octicons-arrow-right-24: Explore Source Files](code/index.md)
+    [▸ Explore Source Files](code/index.md)
 
 </div>
 
 ---
 
-## ⚙️ Core Technical Specifications
+## ⬡ Core Technical Specifications
 
 | Metric / Layer | Specification |
 | :--- | :--- |
@@ -113,4 +115,4 @@ graph TD
 | **Remote Ingress** | Cloudflare Argo Zero Trust Tunnels (Zero open public inbound router ports) |
 | **Frontend Frameworks** | Vue.js 3, TypeScript, Vite, Vanilla ESNext, Tailwind CSS |
 | **Backend Daemons** | Node.js Express 5, Python 3 RPC Daemons, Go (Wings), Socket.IO WebSockets |
-| **Availability Target** | 99.98% cluster uptime with systemd watchdog auto-recovery |
+| **Availability Target** | 99.98% cluster uptime with systemd watchdog auto recovery |

@@ -1,0 +1,53 @@
+name: Auto-Update Documentation
+
+on:
+  schedule:
+    # Run every 6 hours automatically
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+  repository_dispatch:
+    types: [proxmox-container-created, proxmox-container-updated]
+
+jobs:
+  sync-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Documentation Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-material mkdocs-minify-plugin
+
+      - name: Run Auto-Update Sync
+        env:
+          PVE_HOST: ${{ secrets.PVE_HOST }}
+          PVE_PORT: ${{ secrets.PVE_PORT }}
+          PVE_NODE: ${{ secrets.PVE_NODE }}
+          PVE_TOKEN_ID: ${{ secrets.PVE_TOKEN_ID }}
+          PVE_TOKEN_SECRET: ${{ secrets.PVE_TOKEN_SECRET }}
+          GITHUB_USER: IAndrexI
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/auto_update_docs.py
+
+      - name: Commit and Push Changes if Updated
+        run: |
+          git config --local user.email "bot@protutech.vip"
+          git config --local user.name "Protutech Automation Bot"
+          if [[ -n $(git status -s docs/) ]]; then
+            git add docs/
+            git commit -m "chore(auto-update): sync live Proxmox containers and GitHub repos [skip ci]"
+            git push origin main
+          else
+            echo "No changes detected. Website is up to date."
+          fi

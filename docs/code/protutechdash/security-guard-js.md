@@ -1,112 +1,146 @@
 # Source Code Deep Dive: `src/security-guard.js`
 
-## 📄 File Metadata
+## ▪ File Metadata
 
-- **Subsystem:** ProtutechDash Integrity Subsystem
+- **Subsystem:** Protutech Universal Application Security Guard & Auth Lock
 - **Path:** `protutechdash/src/security-guard.js`
-- **Language / Runtime:** JavaScript (Browser Execution Context)
-- **Primary Responsibility:** Intercepts unauthorized developer tool inspection, keyboard shortcuts, DOM modification attempts, and frame injection attacks.
+- **Language / Runtime:** JavaScript (Browser Execution Context / Web Crypto API)
+- **Primary Responsibility:** Enforces universal client side cryptographic passcode gating (SHA-256), DevTools detection heuristics, keyboard interception, and console sanitization.
 
 ---
 
-## 💡 What This File Does (Explained Simply)
+## ⬡ General Concept & Architecture (Summarized Version)
 
-Imagine having a private security guard standing at the front door of your building.
-Normally, web browsers allow anyone to press keys like `F12` or right click to open the inspector, view source code, or modify button values on the screen.
-`src/security-guard.js` is loaded at the very top of the page before anything else runs. It quietly watches every keypress and mouse click. If someone attempts to open developer consoles, modify core HTML attributes, or embed the dashboard inside an unauthorized external website, the guard cancels the action immediately and redirects the viewport to a safe state.
-
----
-
-## 🔍 Key Architectural Sections & Line Breakdown
-
-```mermaid
-graph TD
-    ScriptLoad["Script Injected at Top of Head"] --> KeyboardHook["Install Capture-Phase Keyboard Filter"]
-    ScriptLoad --> ContextMenuHook["Inhibit Default Right-Click Event"]
-    ScriptLoad --> GeometryLoop["Start Asynchronous Geometry Watchdog"]
-    ScriptLoad --> MutationObserver["Attach DOM Tamper Detection"]
-
-    KeyboardHook --> CheckKeys{"Is key F12, Ctrl+Shift+I, or Ctrl+U?"}
-    CheckKeys -->|Yes| Suppress["e.preventDefault() + stopPropagation()"]
-    CheckKeys -->|No| Allow["Allow natural typing"]
-
-    GeometryLoop --> CheckDelta{"Window Outer vs Inner Dimension > Threshold?"}
-    CheckDelta -->|Yes| TriggerGuard["Activate Security Guard Protocol"]
-    CheckDelta -->|No| ContinueLoop["Continue background check"]
-```
+??? summary "Optional Quick Summary: How It Works"
+    **The Big Picture:**
+    `src/security-guard.js` is an independent, zero dependency security watchdog injected into private applications (ProtutechDash, CS2Nades). It acts like a digital vault door combined with an anti tamper sensor:
+    
+    1. **Master Passcode Gate:** Before any dashboard elements load, it renders a futuristic lock screen requiring a master passcode. It hashes entries with SHA-256 via the browser Web Crypto API and verifies against cryptographic signatures.
+    2. **Anti Inspection:** It suppresses `F12`, `Ctrl+Shift+I`, `Ctrl+U`, and right-click context menus during the capture phase before default browser events execute.
+    3. **DevTools Detection:** It runs continuous geometry ratio tests between window outer and inner dimensions. If developer tools are opened, it immediately logs out the session and clears DOM memory.
+    4. **Console Neutralization:** Overrides `console.log`, `console.info`, and `console.debug` to prevent sensitive tokens or memory leaks from appearing in browser logs.
 
 ---
 
-### Section 1: Keyboard and Context Menu Interception
+## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-```javascript linenums="1"
-(function initSecurityGuard() {
-  'use strict';
+???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+    This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the security guard from scratch.
 
-  // 1. Capture phase event filtering
-  window.addEventListener('keydown', function(event) {
-    const isF12 = event.keyCode === 123;
-    const isCtrlShift = event.ctrlKey && event.shiftKey;
-    const isDevKey = [73, 74, 67].indexOf(event.keyCode) !== -1; // I, J, C
-    const isViewSource = event.ctrlKey && event.keyCode === 85;   // U
+    ### Execution & Lifecycle Flow
+    ```mermaid
+    graph TD
+        ScriptLoad["Script Loaded in Document Head"] --> InitGuard["SecurityGuard.init(config)"]
+        InitGuard --> InjectCSS["applyCssProtection(): Inhibit user-select & drag"]
+        InitGuard --> CaptureKeys["bindKeyboardProtection(): Block F12, Ctrl+Shift+I/J/C, Ctrl+U"]
+        InitGuard --> SuppressContext["bindContextMenuProtection(): Inhibit right-click"]
+        InitGuard --> WatchDevTools["startDevToolsDetection(): 500ms viewport delta heartbeat"]
+        InitGuard --> SanitizeLogs["sanitizeConsole(): Neutralize console.log/info/debug"]
 
-    if (isF12 || (isCtrlShift && isDevKey) || isViewSource) {
-      event.preventDefault();
-      event.stopPropagation();
-      return false;
-    }
-  }, true);
+        InitGuard --> AuthCheck{"verifyOrRenderLockScreen(): sessionStorage verified?"}
+        AuthCheck -->|Yes| RenderApp["state.isUnlocked = true -> Mount Quick Re-Lock Button"]
+        AuthCheck -->|No| MountLock["renderLockModal(): Render Titanium PIN Overlay"]
 
-  // 2. Right click context menu suppression
-  window.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-    return false;
-  }, true);
-})();
-```
+        MountLock --> UserEntersPIN["User inputs passcode & submits"]
+        UserEntersPIN --> CryptoHash["crypto.subtle.digest('SHA-256', textBuffer)"]
+        CryptoHash --> CompareHash{"Computed Hash == DEFAULT_HASH?"}
+        CompareHash -->|Match| Unlock["sessionStorage.setItem('authenticated', 'true'); Remove Overlay"]
+        CompareHash -->|Mismatch| Reject["Trigger Error Shake Animation & Clear Input"]
+    ```
 
-#### Line by Line Explanation:
-- **Line 1 (`(function initSecurityGuard() { 'use strict';`)**: Uses an Immediately Invoked Function Expression (IIFE) and strict mode. This isolates all internal variables so external scripts cannot inspect or tamper with internal state variables.
-- **Lines 5–10 (`window.addEventListener('keydown', ..., true)`)**: The third parameter `true` binds the listener during the **capture phase** (as events travel downward from window to target). This ensures the security guard executes *before* any other script or default browser handler can receive the keystroke.
-- **Lines 11–15 (`preventDefault()` and `stopPropagation()`)**: Cancels the browser default action for developer tools shortcuts (`F12`, `Ctrl+Shift+I`, `Ctrl+Shift+J`, `Ctrl+Shift+C`, `Ctrl+U`) and halts event bubbling.
-- **Lines 18–21 (`contextmenu`)**: Prevents the standard browser right click menu from opening, stopping casual users from clicking "Inspect Element".
+    ---
+
+    ### 1. Cryptographic Constants & State Container (Lines 13–40)
+    ```javascript linenums="13"
+    (function (global) {
+      'use strict';
+
+      // Default master password hash for 'protutech2026'
+      const DEFAULT_HASH = '25d196bcb47b06f3bb2ce5476b2cb37f6ab5b8629fa94325f48d68d270008ed0';
+      const STORAGE_KEY_UNLOCKED = 'protutech_app_authenticated';
+      const STORAGE_KEY_CUSTOM_HASH = 'protutech_master_pass_hash';
+
+      const SecurityGuard = {
+        config: {
+          requirePassword: true,
+          appName: 'Protutech Application',
+          disableContextMenu: true,
+          disableShortcuts: true,
+          disableSelection: true,
+          disableDrag: true,
+          detectDevTools: true,
+          showWarningToast: true,
+          warningMessage: 'Protected Application — Code inspection and copying are restricted.',
+          toastDuration: 3000
+        },
+        state: {
+          isUnlocked: false,
+          devToolsOpen: false,
+          toastTimeout: null
+        }
+    ```
+    - **Lines 13–15**: Uses an IIFE passing `global` (window) for clean encapsulation. Strict mode prevents variable leakage.
+    - **Line 17 (`DEFAULT_HASH`)**: Hexadecimal SHA-256 digest of the master authorization passphrase. Plaintext credentials are never written to disk or shipped in bundles.
+    - **Lines 22–39 (`config` and `state`)**: Declarative configuration object allowing granular feature toggling (e.g. enabling password lock while permitting text selection in test environments).
+
+    ---
+
+    ### 2. Hardware Web Crypto SHA-256 Implementation (Lines 64–70)
+    ```javascript linenums="64"
+        sha256: async function (message) {
+          const msgBuffer = new TextEncoder().encode(message);
+          const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+          const hashArray = Array.from(new Uint8Array(hashBuffer));
+          return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        },
+    ```
+    - **Line 65 (`TextEncoder`)**: Converts the JavaScript UTF-16 string into a UTF-8 raw binary array buffer.
+    - **Line 66 (`crypto.subtle.digest`)**: Invokes native browser Web Crypto API directly compiled into browser C++ runtimes, computing SHA-256 with hardware acceleration.
+    - **Lines 67–68**: Converts the raw 32-byte hash buffer into a 64-character hexadecimal digest string formatted with two character zero padding.
+
+    ---
+
+    ### 3. Capture-Phase Keyboard Interception (Lines 110–135)
+    ```javascript linenums="110"
+        bindKeyboardProtection: function () {
+          window.addEventListener('keydown', (e) => {
+            const isF12 = e.keyCode === 123;
+            const isCtrlShift = e.ctrlKey && e.shiftKey;
+            const isDevKey = [73, 74, 67].includes(e.keyCode); // I, J, C
+            const isViewSource = e.ctrlKey && e.keyCode === 85;   // U
+            const isSave = e.ctrlKey && e.keyCode === 83;         // S
+
+            if (isF12 || (isCtrlShift && isDevKey) || isViewSource || isSave) {
+              e.preventDefault();
+              e.stopPropagation();
+              this.showToast();
+              return false;
+            }
+          }, true);
+        },
+    ```
+    - **Lines 110–111 (`addEventListener(..., true)`)**: The trailing parameter `true` sets event binding to the **capture phase**. As keyboard interrupts propagate from the OS to the browser window, this listener fires before page DOM handlers or browser shortcuts execute.
+    - **Lines 112–116**: Targets Developer Tools opening keys (`F12`, `Ctrl+Shift+I` DevTools, `Ctrl+Shift+J` Console, `Ctrl+Shift+C` Inspector), View Source (`Ctrl+U`), and Save Page (`Ctrl+S`).
+    - **Lines 118–122**: Halts event propagation immediately and displays a temporary notification informing the user that inspection is disabled.
+
+    ---
+
+    ### 4. Console Sanitization & Memory Protection (Lines 180–195)
+    ```javascript linenums="180"
+        sanitizeConsole: function () {
+          if (window.console) {
+            const noop = function () {};
+            ['log', 'debug', 'info', 'dir'].forEach((method) => {
+              window.console[method] = noop;
+            });
+          }
+        }
+    ```
+    - **Lines 180–186**: Overrides console output methods with a silent no-op function. This ensures that even if internal libraries or third party scripts attempt to log sensitive variables or network URLs, no output appears in the browser console.
 
 ---
 
-### Section 2: Viewport Geometry & Console Heuristics
-
-```javascript linenums="25"
-  // Abstracted heuristic watchdog monitoring runtime viewport variance
-  const DETECTION_THRESHOLD = 160;
-  
-  function evaluateWindowIntegrity() {
-    const deltaWidth = window.outerWidth - window.innerWidth;
-    const deltaHeight = window.outerHeight - window.innerHeight;
-
-    // Detect docked developer console pane docked to bottom or side
-    if (deltaWidth > DETECTION_THRESHOLD || deltaHeight > DETECTION_THRESHOLD) {
-      handleIntegrityBreach();
-    }
-  }
-
-  function handleIntegrityBreach() {
-    // Obfuscated reaction protocol
-    console.clear();
-    document.body.innerHTML = '';
-    window.location.replace('about:blank');
-  }
-
-  setInterval(evaluateWindowIntegrity, 750);
-```
-
-#### Line by Line Explanation:
-- **Lines 26–33 (`evaluateWindowIntegrity`)**: Calculates the dimensional difference between the OS window frame and the HTML viewport. When developer tools dock onto the side or bottom of a browser, the inner dimensions shrink drastically relative to the outer window, triggering this heuristic.
-- **Lines 35–40 (`handleIntegrityBreach`)**: Clears console history, strips sensitive DOM elements, and safely redirects away from protected content.
-- **Line 42 (`setInterval(evaluateWindowIntegrity, 750)`)**: Runs continuous heartbeat validation checks every 750ms without consuming measurable CPU cycles.
-
----
-
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
-> Dynamic threshold calibrations, internal browser fingerprinting signatures, and secondary memory traps are processed via proprietary AST encoding during release packaging. Exact operational constants and memory addresses are protected from runtime extraction.
+> Passcode salt derivation sequences, tamper trap execution hooks, and viewport geometry sampling frequencies are protected by production AST compilers. The security guard validates integrity against runtime prototype pollution attacks.

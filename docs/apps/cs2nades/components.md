@@ -1,6 +1,6 @@
 # CS2 Tactical Stratbook Component & Store Hierarchy
 
-## 📂 Source Code Directory Structure
+## ▸ Source Code Directory Structure
 
 The CS2Nades frontend is organized into modular component groups and specialized domain stores:
 
@@ -71,7 +71,7 @@ CS2Nades/
 
 ---
 
-## 🏗️ State Flow & Pinia Store Contracts
+## ⬡ State Flow & Pinia Store Contracts
 
 ```mermaid
 classDiagram
@@ -120,7 +120,7 @@ classDiagram
 
 ---
 
-## 🧩 Key Component Interactions
+## ▸ Key Component Interactions
 
 1. **`TacticsBoard.vue` & `useCanvas.ts`**:
    The tactics board mounts an HTML5 `<canvas>` element styled to fill the container. Pointer down/move/up events are intercepted, normalized to percentage coordinates (0% to 100%) so that screen resolution differences between teammates do not warp drawings, and dispatched to `gameRoomStore.emitStroke()`.

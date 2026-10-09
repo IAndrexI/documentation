@@ -2,8 +2,6 @@ site_name: Protutech Engineering Docs
 site_description: Deep architectural breakdowns, system topologies, and service workflows for the Protutech ecosystem.
 site_author: Andrew (IAndrexI)
 site_url: https://docs.protutech.vip
-repo_name: IAndrexI/documentation
-repo_url: https://github.com/IAndrexI/documentation
 copyright: "Copyright &copy; 2026 Andrew (Protutech)"
 
 # Custom Portfolio Theme Overrides
@@ -35,8 +33,7 @@ theme:
     - navigation.tracking       # URL updates with scroll position
     - navigation.tabs           # Top-level navigation tabs
     - navigation.tabs.sticky    # Keep tabs visible while scrolling
-    - navigation.sections       # Expandable navigation sections
-    - navigation.expand         # Auto-expand sections
+    - navigation.sections       # Expandable navigation sections (expand when selected)
     - navigation.top            # Back to top floating pill
     - navigation.footer         # Next/previous page footer
     - search.suggest            # Search auto-completion
@@ -68,9 +65,6 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:          # Checklist support
       custom_checkbox: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 # Navigation Structure
 nav:
@@ -128,3 +122,4 @@ nav:
   - Deployment Guides:
       - Proxmox LXC Setup: deploy/proxmox-lxc.md
       - Docker Compose: deploy/docker.md
+      - Automated Proxmox & GitHub Sync: deploy/auto-update.md

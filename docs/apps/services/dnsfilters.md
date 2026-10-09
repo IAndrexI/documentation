@@ -1,12 +1,12 @@
 # DNSfilters Automated Blocklist CI/CD
 
-## 🎯 High-Level Overview
+## ◆ High-Level Overview
 
 **DNSfilters** is an automated threat intelligence pipeline that continuously compiles, deduplicates, and validates over 350,000+ domain rules. It feeds an ultra-fast DNS sinkhole (running on AdGuard Home in Proxmox LXC 102) to block ad networks, tracking scripts, telemetry loggers, and malicious domains across all homelab devices.
 
 ```mermaid
 flowchart TD
-    Trigger["⏰ Automated Scheduled Pipeline (Daily Cron)"] --> Upstream["Fetch 15+ Upstream Threat Feeds"]
+    Trigger["[T] Automated Scheduled Pipeline (Daily Cron)"] --> Upstream["Fetch 15+ Upstream Threat Feeds"]
     Upstream --> Ingestion["Raw Feed Ingestion (400,000+ Records)"]
     Ingestion --> SyntaxEngine["Syntax Parser & Punycode Normalizer"]
     SyntaxEngine --> Dedupe["Hash-Set Deduplication Engine"]
@@ -18,7 +18,7 @@ flowchart TD
 
 ---
 
-## 💡 How Network Wide DNS Sinkholing Works (Explained Simply)
+## ✦ How Network Wide DNS Sinkholing Works (Explained Simply)
 
 When any device in your house (such as a smart TV, phone, or computer) wants to visit a website or send background analytics, it first asks the DNS server: *"What is the IP address for tracker-domain.com?"*
 
@@ -27,6 +27,6 @@ When any device in your house (such as a smart TV, phone, or computer) wants to 
 
 ---
 
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 Proprietary scoring heuristics that evaluate emerging telemetry domains, false positive weighting formulas, and custom internal homelab routing bypasses are sanitized prior to public release builds.

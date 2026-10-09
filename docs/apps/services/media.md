@@ -1,14 +1,14 @@
 # Navidrome & Soulseek Lossless Audio Pipeline
 
-## 🎯 High-Level Overview
+## ◆ High-Level Overview
 
 An automated, self hosted high fidelity audio pipeline that acquires, catalogs, and streams lossless audio (FLAC 24-bit / 96kHz) across personal mobile and desktop devices with complete independence from commercial streaming subscriptions.
 
 ```mermaid
 graph TD
-    Client["📱 Mobile & Desktop Clients (Substreamer / Feishin / Navidrome Web)"]
+    Client["▸ Mobile & Desktop Clients (Substreamer / Feishin / Navidrome Web)"]
     
-    subgraph ProxmoxMedia["🖥️ Proxmox Media Node (LXC 103)"]
+    subgraph ProxmoxMedia["▸ Proxmox Media Node (LXC 103)"]
         Navidrome["Navidrome Music Server (Go + SQLite / Subsonic API)"]
         Slskd["slskd Daemon (Soulseek P2P Network Headless Engine)"]
         Beets["Beets Audio Tagger & AcoustID Fingerprinter"]
@@ -23,7 +23,7 @@ graph TD
 
 ---
 
-## 💡 How It Works (Explained Simply)
+## ✦ How It Works (Explained Simply)
 
 Imagine having your own personal, private Spotify or Apple Music, except every track is stored in pure, uncompressed master studio quality on your own hard drives:
 1. **Search & Acquisition**: You request an album via a clean web interface (`slskd`). It queries decentralized music networks to locate original lossless tracks.
@@ -32,6 +32,6 @@ Imagine having your own personal, private Spotify or Apple Music, except every t
 
 ---
 
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 Storage mount paths (`/mnt/pve/music_pool`), P2P transfer obfuscation settings, and authentication salt schemes are isolated via ZFS dataset mount points and unprivileged container UID mappings.

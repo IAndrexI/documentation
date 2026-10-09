@@ -1,6 +1,6 @@
 # ProtutechDash Subfolder & Module Anatomy
 
-## 📂 Exhaustive Directory Hierarchy
+## ▸ Exhaustive Directory Hierarchy
 
 The repository is structured into distinct functional domains, isolating browser presentation, native host bindings, build tooling, and static mock environments:
 
@@ -37,7 +37,7 @@ protutechdash/
 
 ---
 
-## 🔍 Module Responsibilities by Subfolder
+## ▪ Module Responsibilities by Subfolder
 
 ### 1. `src/` – Application Core & User Experience
 The primary client runtime executing in the browser:

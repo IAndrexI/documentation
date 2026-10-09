@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `scripts/obfuscate.js`
 
-## 📄 File Metadata
+## ▪ File Metadata
 
 - **Subsystem:** Protutech Build Pipeline & Code Hardening
 - **Path:** `protutechdash/scripts/obfuscate.js`
@@ -9,7 +9,7 @@
 
 ---
 
-## 💡 What This File Does (Explained Simply)
+## ✦ What This File Does (Explained Simply)
 
 When programmers write code, they write clean, readable sentences with clear function names like `loginUser` or `checkSecurity`. If this code were uploaded directly to a public website, anyone could easily read and copy it.
 `scripts/obfuscate.js` is like an automated secret cipher machine:
@@ -20,13 +20,13 @@ When programmers write code, they write clean, readable sentences with clear fun
 
 ---
 
-## 🔍 Key Architectural Sections & Line Breakdown
+## ▪ Key Architectural Sections & Line Breakdown
 
 ```mermaid
 graph TD
     Source["Raw JavaScript: src/app.js & src/security-guard.js"] --> AST["Parse into Abstract Syntax Tree (AST)"]
     
-    subgraph Transformations["🛡️ AST Transformations"]
+    subgraph Transformations["[#] AST Transformations"]
         AST --> Flatten["Control Flow Flattening (Replaces loops with switch state machines)"]
         AST --> DeadCode["Dead Code Injection (Inserts harmless dummy code paths)"]
         AST --> EncryptStrings["String Array Encoding (Base64 + Rotational Shift)"]
@@ -94,7 +94,7 @@ for (const target of filesToObfuscate) {
 
 ---
 
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 > [!NOTE] Compiler Shielding
 > Custom AST transform seeds, salt generation formulas, and private variable maps are randomized on every build iteration. Deobfuscation scripts cannot rely on deterministic pattern matching across multiple deployed builds.

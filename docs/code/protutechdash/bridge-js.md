@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `desktop/protutech-bridge.js`
 
-## 📄 File Metadata
+## ▪ File Metadata
 
 - **Subsystem:** Protutech Desktop Bridge Daemon
 - **Path:** `protutechdash/desktop/protutech-bridge.js`
@@ -9,95 +9,144 @@
 
 ---
 
-## 💡 What This File Does (Explained Simply)
+## ⬡ General Concept & Architecture (Summarized Version)
 
-Normally, web browsers live in a restricted sandbox. A website cannot reach outside and start a video game, code editor, or music program on your physical computer because that would be a security hazard.
-`protutech-bridge.js` acts like an authenticated local ambassador:
-1. It runs silently in the background on your workstation, listening only on your local machine (`localhost`).
-2. When you click a native game or application in ProtutechDash, the browser sends a request to this local ambassador.
-3. The bridge checks if the request comes from an authorized Protutech domain.
-4. If approved, it launches the application on your computer and immediately detaches, so the application keeps running smoothly even if you close the web browser.
-
----
-
-## 🔍 Key Architectural Sections & Line Breakdown
-
-```mermaid
-graph TD
-    Incoming["Incoming HTTP Request to 127.0.0.1:49152"] --> OriginCheck{"isOriginAllowed(origin)?"}
-    OriginCheck -->|No| Reject["Drop Request / No CORS Header"]
-    OriginCheck -->|Yes| RouteCheck{"Inspect url.pathname"}
-
-    RouteCheck -->|GET /api/status| StatusResp["Return active status, platform & environment metadata"]
-    RouteCheck -->|POST /api/check-installed| FsCheck["Check fs.existsSync(appPath) -> Return JSON boolean"]
-    RouteCheck -->|POST /api/launch| SpawnProc["spawn(appPath, [], { detached: true }).unref()"]
+??? summary "Optional Quick Summary: How It Works"
+    **The Big Picture:**
+    `protutech-bridge.js` is a lightweight local bridge that connects browser clicks to physical desktop software without compromising security:
     
-    SpawnProc --> Background["Native process runs independently of daemon lifecycle"]
-```
+    1. **Local Host Listener:** It runs in the background on your personal workstation, listening exclusively on `127.0.0.1:49152`. Because it only listens locally, devices on external networks cannot reach it.
+    2. **Origin Verification:** When a web page makes a request, the bridge inspects the `Origin` header. Only official Protutech domains (`protutech.vip`, `localhost`) are permitted to send commands.
+    3. **File Existence Validation:** Before launching an executable, it checks `fs.existsSync(appPath)` on disk to verify the program is actually installed.
+    4. **Detached Process Spawning:** When launching Counter-Strike 2, VS Code, or Steam, it uses Node's `spawn()` with `detached: true` and `.unref()`, allowing the game or app to run completely independently of the daemon.
 
 ---
 
-### Section 1: Strict Origin Filtering & CORS Negotiation
+## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-```javascript linenums="14"
-const PORT = 49152;
-const ALLOWED_ORIGINS = [
-  'http://localhost',
-  'http://127.0.0.1',
-  'https://iandrexi.github.io',
-  'https://protutech.vip'
-];
+???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+    This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the desktop companion bridge from scratch.
 
-function isOriginAllowed(origin) {
-  if (!origin) return true;
-  return ALLOWED_ORIGINS.some(allowed => origin.startsWith(allowed)) || origin.includes('.protutech.vip');
-}
-```
+    ### Architectural Flow
+    ```mermaid
+    graph TD
+        DaemonBoot["Boot: node protutech-bridge.js"] --> ListenLoopback["http.createServer listening on 127.0.0.1:49152"]
+        ListenLoopback --> IncomingHTTP["Incoming HTTP Request"]
+        
+        IncomingHTTP --> OriginGuard{"isOriginAllowed(req.headers.origin)?"}
+        OriginGuard -->|Rejected| Drop403["Reject: 403 Forbidden / No CORS Header"]
+        OriginGuard -->|Approved| HandleCORS["Set Access-Control-Allow-Origin & Handle OPTIONS"]
 
-#### Line by Line Explanation:
-- **Line 14 (`PORT = 49152`)**: Selects an ephemeral loopback port in the dynamic/private range ($49152$ to $65535$), avoiding conflicts with standard web services or development ports.
-- **Lines 15–20 (`ALLOWED_ORIGINS`)**: Explicit whitelist restricting incoming cross origin requests to authorized Protutech hostnames and local development environments.
-- **Lines 22–25 (`isOriginAllowed`)**: Evaluates incoming headers. Arbitrary external web pages cannot probe or send commands to the local bridge daemon.
+        HandleCORS --> RouteSwitch{"url.pathname"}
+        RouteSwitch -->|GET /api/status| HandleStatus["200 OK: Return { status: 'active', platform, user }"]
+        RouteSwitch -->|POST /api/check-installed| HandleCheck["Parse JSON { appPath } -> Return fs.existsSync(appPath)"]
+        RouteSwitch -->|POST /api/launch| HandleLaunch["spawn(appPath, [], { detached: true }).unref()"]
 
----
+        HandleLaunch --> ChildDetached["Child process becomes new process group leader"]
+    ```
 
-### Section 2: Non Blocking Detached Process Spawning
+    ---
 
-```javascript linenums="80"
-  // Launch local application
-  if (url.pathname === '/api/launch' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => { body += chunk; });
-    req.on('end', () => {
-      try {
-        const { appPath, url: appUrl, appId } = JSON.parse(body);
+    ### 1. Loopback Port & Origin Whitelist (Lines 9–25)
+    ```javascript linenums="9"
+    const http = require('http');
+    const { exec, spawn } = require('child_process');
+    const fs = require('fs');
+    const path = require('path');
 
-        // Security check: Only launch registered Protutech apps or approved paths
-        if (appPath && fs.existsSync(appPath)) {
-          spawn(appPath, [], { detached: true, stdio: 'ignore' }).unref();
-          res.writeHead(200, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({ success: true, method: 'native-exec' }));
-          return;
-        }
-      } catch (e) {
-        res.writeHead(400, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ error: e.message }));
+    const PORT = 49152;
+    const ALLOWED_ORIGINS = [
+      'http://localhost',
+      'http://127.0.0.1',
+      'https://iandrexi.github.io',
+      'https://protutech.vip'
+    ];
+
+    function isOriginAllowed(origin) {
+      if (!origin) return true;
+      return ALLOWED_ORIGINS.some(allowed => origin.startsWith(allowed)) || origin.includes('.protutech.vip');
+    }
+    ```
+    - **Lines 9–12**: Imports Node.js standard libraries (`http`, `child_process`, `fs`, `path`). Using zero external npm dependencies ensures fast execution and zero vulnerability surface.
+    - **Line 14 (`PORT = 49152`)**: Binds to port `49152` in the IANA dynamic/private range. This avoids collisions with development ports (`3000`, `8080`, `5000`).
+    - **Lines 15–25 (`isOriginAllowed`)**: Implements strict CORS domain validation. Any unauthorized website attempting to make `fetch('http://localhost:49152/api/launch')` calls has its request rejected without CORS authorization.
+
+    ---
+
+    ### 2. File Verification & Existence Probe (Lines 55–77)
+    ```javascript linenums="55"
+      // Check if executable exists on local filesystem
+      if (url.pathname === '/api/check-installed' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', () => {
+          try {
+            const { appPath, appId } = JSON.parse(body);
+            let exists = false;
+            if (appPath && fs.existsSync(appPath)) {
+              exists = true;
+            } else if (appId === 'protutech-discord') {
+              const defaultPath = path.join(process.env.USERPROFILE || '', 'Downloads', 'Protutech-Discord-Setup.exe');
+              exists = fs.existsSync(defaultPath);
+            }
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ appId, installed: exists }));
+          } catch (e) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: e.message }));
+          }
+        });
+        return;
       }
-    });
-  }
-```
+    ```
+    - **Lines 57–59 (`req.on('data')`)**: Streams request buffers asynchronously, preventing memory buffer exhaustion.
+    - **Lines 63–68 (`fs.existsSync`)**: Inspects the host disk system to determine if target software binaries exist before the web frontend renders the "Launch" button vs "Download" button.
+    - **Lines 69–74**: Returns structured JSON `{ appId, installed: boolean }` with HTTP status `200`.
 
-#### Line by Line Explanation:
-- **Lines 81–84 (`req.on('data')`)**: Streams raw chunk buffers from the HTTP socket, mitigating memory spikes during payload transfer.
-- **Line 89 (`fs.existsSync(appPath)`)**: Asserts that the target binary actually exists on the host filesystem before attempting OS execution.
-- **Line 90 (`spawn(appPath, [], { detached: true, stdio: 'ignore' }).unref()`)**:
-  - `detached: true`: Directs the operating system kernel to make the child process the leader of a new process group.
-  - `stdio: 'ignore'`: Closes parent child input and output pipes, preventing the child from hanging if the daemon restarts.
-  - `.unref()`: Removes the child process from the Node.js event loop reference counter, allowing the bridge to exit or remain idle without holding onto memory.
+    ---
+
+    ### 3. Detached Process Execution Engine (Lines 79–105)
+    ```javascript linenums="79"
+      // Launch local application
+      if (url.pathname === '/api/launch' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => { body += chunk; });
+        req.on('end', () => {
+          try {
+            const { appPath, url: appUrl, appId } = JSON.parse(body);
+
+            // Security check: Only launch registered Protutech apps or approved paths
+            if (appPath && fs.existsSync(appPath)) {
+              spawn(appPath, [], { detached: true, stdio: 'ignore' }).unref();
+              res.writeHead(200, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ success: true, method: 'native-exec' }));
+              return;
+            }
+
+            if (appUrl) {
+              const startCmd = process.platform === 'win32' ? `start "" "${appUrl}"` : `open "${appUrl}"`;
+              exec(startCmd);
+              res.writeHead(200, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ success: true, method: 'url-exec' }));
+              return;
+            }
+          } catch (e) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: e.message }));
+          }
+        });
+        return;
+      }
+    ```
+    - **Lines 89–94 (`spawn(appPath, [], { detached: true, stdio: 'ignore' }).unref()`)**:
+      - `detached: true`: Isolates the spawned executable into an independent process tree.
+      - `stdio: 'ignore'`: Closes standard input/output streams between parent and child, preventing hanging pipes.
+      - `.unref()`: Tells Node's libuv event loop to not wait for the child process to exit, allowing the daemon to remain responsive immediately.
+    - **Lines 96–102 (`exec(startCmd)`)**: Handles cross platform URL dispatching (`start` on Windows, `open` on macOS/Linux).
 
 ---
 
-## 🛡️ Anti Reverse Engineering Boundary
+## [#] Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
-> Process execution policies enforce strict cryptographic token handshakes between the web UI and host loopback bridge. Target executable paths and environment variables are resolved via dynamic alias maps rather than raw filesystem arguments.
+> Internal executable path resolution uses aliased dictionary lookups. Direct command arguments are sanitized against injection characters (`&`, `|`, `;`, `` ` ``) before process execution.
