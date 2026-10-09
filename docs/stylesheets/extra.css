@@ -1,0 +1,288 @@
+/* ==========================================================================
+   PROTUTECH ENGINEERING DOCS - APPLE & OBSIDIAN NEON DESIGN SYSTEM
+   Synchronized directly with Andrew's Portfolio & Protutech Suite Aesthetics
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Protutech Obsidian Dark Palette */
+  --pt-bg-app: #060913;
+  --pt-bg-surface: #0d1322;
+  --pt-bg-card: rgba(14, 21, 37, 0.75);
+  --pt-bg-card-hover: rgba(20, 30, 52, 0.9);
+  --pt-bg-code: #090e1c;
+  
+  --pt-border-subtle: rgba(255, 255, 255, 0.08);
+  --pt-border-card: rgba(255, 255, 255, 0.12);
+  --pt-border-glow: rgba(0, 242, 254, 0.35);
+  --pt-border-active: #00f2fe;
+
+  --pt-accent-primary: #00f2fe;
+  --pt-accent-secondary: #7f00ff;
+  --pt-accent-gradient: linear-gradient(135deg, #00f2fe 0%, #7f00ff 100%);
+  --pt-accent-glow: rgba(0, 242, 254, 0.25);
+
+  --pt-text-primary: #f8fafc;
+  --pt-text-secondary: #94a3b8;
+  --pt-text-muted: #64748b;
+
+  --pt-radius-sm: 8px;
+  --pt-radius-md: 14px;
+  --pt-radius-lg: 20px;
+  --pt-radius-pill: 9999px;
+
+  /* MkDocs Theme Overrides (Slate / Dark) */
+  --md-default-bg-color: #060913;
+  --md-default-bg-color--light: #0d1322;
+  --md-default-bg-color--lighter: #131c31;
+  --md-default-fg-color: #f8fafc;
+  --md-default-fg-color--light: #94a3b8;
+  --md-default-fg-color--lighter: #64748b;
+
+  --md-primary-fg-color: #0d1322;
+  --md-primary-fg-color--light: #131c31;
+  --md-primary-fg-color--dark: #060913;
+  --md-accent-fg-color: #00f2fe;
+
+  --md-typeset-color: #f8fafc;
+  --md-typeset-a-color: #00f2fe;
+
+  --md-code-bg-color: #090e1c;
+  --md-code-fg-color: #e2e8f0;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ==========================================================================
+   Header & Navigation Glassmorphism
+   ========================================================================== */
+.md-header {
+  background: rgba(6, 9, 19, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 242, 254, 0.2) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.md-header__topic {
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  color: #f8fafc !important;
+}
+
+.md-tabs {
+  background: rgba(13, 19, 34, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.md-tabs__link {
+  font-weight: 600 !important;
+  font-size: 13.5px !important;
+  transition: all 0.2s ease !important;
+  border-radius: var(--pt-radius-pill) !important;
+  padding: 6px 16px !important;
+}
+
+.md-tabs__link--active, .md-tabs__link:hover {
+  background: rgba(0, 242, 254, 0.12) !important;
+  color: #00f2fe !important;
+}
+
+/* Sidebar styling */
+.md-sidebar__scrollwrap {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 242, 254, 0.3) transparent;
+}
+
+.md-nav__link--active {
+  color: #00f2fe !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   Spacious, Clear, and Styled Mermaid Diagrams
+   ========================================================================== */
+.mermaid {
+  margin: 36px 0 !important;
+  padding: 36px 28px !important;
+  background: rgba(10, 16, 30, 0.88) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(0, 242, 254, 0.28) !important;
+  border-radius: var(--pt-radius-lg) !important;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 242, 254, 0.1) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow-x: auto !important;
+}
+
+.mermaid svg {
+  width: 100% !important;
+  max-width: 950px !important;
+  min-height: 280px !important;
+  height: auto !important;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4)) !important;
+}
+
+/* ==========================================================================
+   Code Blocks & Interactive Annotations
+   ========================================================================== */
+.highlight {
+  background: var(--pt-bg-code) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: var(--pt-radius-md) !important;
+  margin: 28px 0 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5) !important;
+  overflow: hidden !important;
+}
+
+.highlight:hover {
+  border-color: rgba(0, 242, 254, 0.3) !important;
+}
+
+/* Code block header bar */
+.md-typeset .code-annotation-marker {
+  background: var(--pt-accent-gradient) !important;
+  color: #030712 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.5) !important;
+}
+
+/* Tabbed code headers */
+.tabbed-set {
+  border-radius: var(--pt-radius-md) !important;
+  margin: 28px 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: var(--pt-bg-code) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.tabbed-labels {
+  background: rgba(13, 19, 34, 0.95) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 4px 12px !important;
+}
+
+.tabbed-labels > label {
+  color: #94a3b8 !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+}
+
+.tabbed-labels > label.active, .tabbed-labels > input:checked + label {
+  color: #00f2fe !important;
+  border-bottom: 2px solid #00f2fe !important;
+}
+
+/* ==========================================================================
+   Tables & Data Breakdown
+   ========================================================================== */
+.md-typeset table:not([class]) {
+  width: 100% !important;
+  margin: 32px 0 !important;
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border: 1px solid var(--pt-border-card) !important;
+  border-radius: var(--pt-radius-md) !important;
+  overflow: hidden !important;
+  background: var(--pt-bg-card) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.md-typeset table:not([class]) th {
+  background: rgba(20, 30, 52, 0.9) !important;
+  color: #f8fafc !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  letter-spacing: 0.05em !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.md-typeset table:not([class]) td {
+  padding: 14px 20px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: #cbd5e1 !important;
+  font-size: 13.5px !important;
+}
+
+.md-typeset table:not([class]) tr:last-child td {
+  border-bottom: none !important;
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: rgba(0, 242, 254, 0.04) !important;
+}
+
+/* ==========================================================================
+   Cards, Callouts & Badges
+   ========================================================================== */
+.grid.cards > ul > li {
+  background: var(--pt-bg-card) !important;
+  backdrop-filter: blur(16px) !important;
+  border: 1px solid var(--pt-border-card) !important;
+  border-radius: var(--pt-radius-md) !important;
+  padding: 24px 28px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.grid.cards > ul > li:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--pt-border-glow) !important;
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 242, 254, 0.25) !important;
+}
+
+/* Callout admonition styling */
+.md-typeset .admonition {
+  border-radius: var(--pt-radius-md) !important;
+  border-left-width: 4px !important;
+  background: rgba(14, 21, 37, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  margin: 28px 0 !important;
+}
+
+/* Directory Tree Styling */
+.pt-tree-block {
+  background: #090e1c;
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: var(--pt-radius-md);
+  padding: 24px;
+  margin: 28px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #94a3b8;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.pt-tree-folder {
+  color: #00f2fe;
+  font-weight: 700;
+}
+
+.pt-tree-desc {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #060913;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.25);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 242, 254, 0.5);
+}

@@ -6,6 +6,10 @@ repo_name: IAndrexI/documentation
 repo_url: https://github.com/IAndrexI/documentation
 copyright: "Copyright &copy; 2026 Andrew (Protutech)"
 
+# Custom Portfolio Theme Overrides
+extra_css:
+  - stylesheets/extra.css
+
 # Theme Configuration
 theme:
   name: material
