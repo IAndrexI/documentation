@@ -54,6 +54,14 @@ graph TD
 
 <div class="grid cards" markdown>
 
+-   **Architecture Presentation Deck**
+
+    ---
+
+    Interactive executive slide deck breaking down every section of the platform with keyboard navigation and fullscreen mode.
+
+    [Launch Presentation Deck](presentation/index.md)
+
 -   **Protutech Suite Dashboard**
 
     ---

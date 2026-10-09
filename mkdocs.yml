@@ -8,6 +8,9 @@ copyright: "Copyright &copy; 2026 Andrew (Protutech)"
 extra_css:
   - stylesheets/extra.css
 
+extra_javascript:
+  - javascripts/presentation.js
+
 # Theme Configuration
 theme:
   name: material
@@ -69,6 +72,12 @@ markdown_extensions:
 # Navigation Structure
 nav:
   - System Overview: index.md
+  - Architecture Presentation:
+      - Master System Slide Deck: presentation/index.md
+      - Infrastructure & Ingress: presentation/infrastructure.md
+      - Software Applications: presentation/applications.md
+      - Autonomous AI & Vector Memory: presentation/aivault.md
+      - Cryptographic Security Vault: presentation/security.md
   - Software Applications:
       - Protutech Suite Dashboard:
           - Architecture & Core System: apps/protutechdash/index.md

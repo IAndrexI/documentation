@@ -2,6 +2,8 @@
 
 **aiVault** is a hybrid private AI compute cluster designed to host sovereign Large Language Models (LLMs), code completion engines, and autonomous memory systems with 100% data privacy. The platform decouples the containerized chat and management interface (running inside Proxmox LXC 104) from a high performance bare metal workstation equipped with dedicated NVIDIA RTX GPU hardware, communicating across a dedicated 2.5 GbE private network backplane.
 
+[View Sovereign AI & Vector Memory Presentation Deck](../../presentation/aivault.md)
+
 ---
 
 ## 1. Cluster Topology & Network Backplane

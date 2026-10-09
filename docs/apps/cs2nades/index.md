@@ -2,6 +2,8 @@
 
 **CS2 Tactical Stratbook** is a realtime, multiuser competitive playbook, interactive 2D vector radar, and grenade utility calculator built with Vue 3, Vite, TypeScript, and Socket.IO. It enables team captains and players to choreograph execute smokes, flashes, molotovs, and HE grenades across official Valve Counter-Strike 2 competitive maps.
 
+[View Tactical & Ballistics Presentation Deck](../../presentation/applications.md)
+
 ---
 
 ## 1. Architectural Overview & Component Interaction

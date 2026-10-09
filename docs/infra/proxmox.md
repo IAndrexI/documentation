@@ -2,6 +2,8 @@
 
 The computational core of the Protutech ecosystem is powered by a dedicated Proxmox VE 9.2.11 bare metal hypervisor. Designed around unprivileged Debian Linux Containers (LXC) and enterprise ZFS pooled storage, this infrastructure balances high performance compute for game servers, AI pipelines, and media ingestion with container level security and low power consumption.
 
+[View Infrastructure Presentation Deck](../presentation/infrastructure.md)
+
 ---
 
 ## 1. Hardware Architecture & Hardware Allocation

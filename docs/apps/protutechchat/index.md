@@ -2,6 +2,8 @@
 
 **ProtutechChat** is an enterprise-grade, self hosted communications platform engineered to provide the fluid visual experience and ergonomics of Discord paired with the sovereignty and decentralized security of the <a href="../../concepts/matrix-protocol.md" class="pt-concept" data-tooltip="Federated Matrix Client-Server specification with DAG event state resolution and Olm/Megolm E2EE.">Matrix Protocol</a> and <a href="../../concepts/webrtc-sfu.md" class="pt-concept" data-tooltip="Selective Forwarding Unit audio/video routing without server-side transcoding overhead.">LiveKit WebRTC</a>. Built as a dual-target codebase (Web SPA and native desktop Electron host), it unifies encrypted text channels, low latency voice lounges, and 60 FPS screen sharing into a single homelab-hosted ecosystem.
 
+[View Unified Communications Presentation Deck](../../presentation/applications.md)
+
 ---
 
 ## 1. System Topology & Dual-Engine Architecture

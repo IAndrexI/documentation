@@ -2,6 +2,8 @@
 
 Protutech implements a layered cryptographic architecture protecting application source code, credentials, and persistent data at rest and in transit across all homelab nodes, based on <a href="../concepts/envelope-encryption.md" class="pt-concept" data-tooltip="AES-256-GCM double envelope encryption with PBKDF2 key derivation adhering to NIST SP 800-38D.">Envelope Encryption</a>.
 
+[View Security & Cryptography Presentation Deck](../presentation/security.md)
+
 ---
 
 ## Envelope Encryption Architecture (Key Wrapping)

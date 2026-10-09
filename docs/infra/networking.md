@@ -2,6 +2,8 @@
 
 All public ingress traffic destined for Protutech homelab services is routed exclusively through Cloudflare Argo Zero Trust Tunnels. By terminating external traffic directly at Cloudflare's Anycast edge, our infrastructure completely eliminates open inbound router ports (such as ports 80, 443, or custom application ports), shielding our internal LAN from port scans, brute-force exploits, and distributed denial of service (DDoS) vectors.
 
+[View Ingress Presentation Deck](../presentation/infrastructure.md)
+
 ---
 
 ## 1. Zero Trust Ingress Architecture

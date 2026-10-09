@@ -2,6 +2,8 @@
 
 **ProtutechDash** is the primary entry point and central application cockpit for the entire Protutech self hosted homelab ecosystem. Inspired by high-density professional suites (such as Adobe Creative Cloud Desktop and Bloomberg Terminal dashboards), it unifies web microservices, isolated embedded web apps, and native desktop executables into a single, cohesive, glassmorphic workspace.
 
+[View Applications Presentation Deck](../../presentation/applications.md)
+
 ---
 
 ## 1. System Architecture & Service Dispatch
