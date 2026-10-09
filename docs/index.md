@@ -2,7 +2,7 @@
 
 Welcome to the internal engineering architecture and technical documentation portal for the **Protutech Ecosystem**.
 
-This documentation site provides deep architectural breakdowns, system topologies, component data flows, and code walkthroughs for all self-hosted homelab applications and developer platforms.
+This documentation site provides deep architectural breakdowns, system topologies, component data flows, and code walkthroughs for all self hosted homelab applications and developer platforms.
 
 ---
 
@@ -41,7 +41,7 @@ graph TD
     end
 
     subgraph GPU_Node["⚡ Dedicated Workstation Node"]
-        aiVault -->|Low-Latency LAN 2.5GbE| Ollama["Ollama CUDA Daemon"]
+        aiVault -->|Low Latency LAN 2.5GbE| Ollama["Ollama CUDA Daemon"]
         Dash -->|Custom URI protutech://| Bridge["Local Companion Daemon"]
     end
 ```
@@ -56,33 +56,49 @@ graph TD
 
     ---
 
-    Unified cross-platform Adobe Creative Cloud-style launcher, periodic table cockpit, and custom protocol dispatcher.
+    Unified cross platform Adobe Creative Cloud style launcher, periodic table cockpit, and custom protocol dispatcher.
 
-    [:octicons-arrow-right-24: View Architecture](apps/protutechdash.md)
+    [:octicons-arrow-right-24: View Architecture](apps/protutechdash/index.md)
 
 -   :material-crosshairs-gps:{ .lg .middle } **CS2 Tactical Stratbook**
 
     ---
 
-    Real-time interactive tactical whiteboard, vector trajectory physics engine, and lineup sync for Counter-Strike 2.
+    Realtime interactive tactical whiteboard, vector trajectory physics engine, and lineup sync for Counter-Strike 2.
 
-    [:octicons-arrow-right-24: View Breakdown](apps/cs2nades.md)
+    [:octicons-arrow-right-24: View Breakdown](apps/cs2nades/index.md)
+
+-   :material-chat-processing:{ .lg .middle } **ProtutechChat & Voice Engine**
+
+    ---
+
+    Decentralized Matrix communication hub paired with studio grade LiveKit WebRTC audio and Electron host.
+
+    [:octicons-arrow-right-24: View Platform](apps/protutechchat/index.md)
 
 -   :material-robot:{ .lg .middle } **aiVault & Ollama Pipeline**
 
     ---
 
-    Distributed local LLM pipeline routing containerized OpenWebUI to remote workstation GPU compute over 2.5GbE LAN.
+    Distributed local LLM pipeline routing containerized OpenWebUI to remote workstation GPU compute with Qdrant vector memory.
 
-    [:octicons-arrow-right-24: View Pipeline](apps/aivault.md)
+    [:octicons-arrow-right-24: View Pipeline](apps/aivault/index.md)
 
 -   :material-shield-lock:{ .lg .middle } **Security & Envelope Encryption**
 
     ---
 
-    Double-layer AES-256-GCM envelope encryption, client-side anti-inspection guards, and multi-drive backups.
+    Double layer AES-256-GCM envelope encryption, client side anti inspection guards, and multidrive backups.
 
     [:octicons-arrow-right-24: View Security Model](infra/security.md)
+
+-   :material-code-tags:{ .lg .middle } **Source Code Deep Dive**
+
+    ---
+
+    File by file technical walkthroughs explaining key lines of code, algorithms, and protective architecture.
+
+    [:octicons-arrow-right-24: Explore Source Files](code/index.md)
 
 </div>
 
@@ -92,7 +108,7 @@ graph TD
 
 | Metric / Layer | Specification |
 | :--- | :--- |
-| **Virtualization** | Proxmox VE 9.2.11 bare-metal cluster with unprivileged Debian LXC microservices |
+| **Virtualization** | Proxmox VE 9.2.11 bare metal cluster with unprivileged Debian LXC microservices |
 | **Storage Engine** | ZFS Pooled Storage with atomic snapshots and cross-container bind mounts (`mp0`) |
 | **Remote Ingress** | Cloudflare Argo Zero Trust Tunnels (Zero open public inbound router ports) |
 | **Frontend Frameworks** | Vue.js 3, TypeScript, Vite, Vanilla ESNext, Tailwind CSS |

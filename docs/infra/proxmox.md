@@ -1,4 +1,4 @@
-# Proxmox VE 9.2 Bare-Metal Hypervisor Cluster
+# Proxmox VE 9.2 Bare Metal Hypervisor Cluster
 
 The computational backbone for all Protutech homelab services, running unprivileged Debian Linux LXC containers with ZFS pooled storage and hardware acceleration.
 
@@ -8,7 +8,7 @@ The computational backbone for all Protutech homelab services, running unprivile
 
 ```mermaid
 graph TD
-    PVE["Proxmox VE 9.2.11 Bare-Metal Node"]
+    PVE["Proxmox VE 9.2.11 Bare Metal Node"]
     
     PVE --> CT100["CT 100: Protutech Core & Docs (Nginx / MkDocs)"]
     PVE --> CT101["CT 101: Game Ops & CS2 Tools (Pelican / Wings)"]

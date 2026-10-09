@@ -76,17 +76,55 @@ markdown_extensions:
 nav:
   - System Overview: index.md
   - Software Applications:
-      - Protutech Suite Launcher: apps/protutechdash.md
-      - CS2 Tactical Stratbook: apps/cs2nades.md
-      - proxDiscord & RPC Daemon: apps/proxdiscord.md
-      - aiVault Local LLM Engine: apps/aivault.md
-      - DNSfilters Automated CI/CD: apps/dnsfilters.md
-      - Pelican Game Server Panel: apps/pelican.md
-      - Soulseek & Navidrome Audio: apps/media.md
+      - Protutech Suite Dashboard:
+          - Architecture & Core System: apps/protutechdash/index.md
+          - Subfolder & Module Anatomy: apps/protutechdash/structure.md
+          - Bridge & Security Subsystem: apps/protutechdash/security.md
+      - CS2 Tactical Stratbook:
+          - Tactical Engine & Architecture: apps/cs2nades/index.md
+          - Vue 3 & Pinia Hierarchy: apps/cs2nades/components.md
+          - Physics & Coordinate Engine: apps/cs2nades/physics.md
+      - ProtutechChat & Matrix Engine:
+          - Unified Communications Hub: apps/protutechchat/index.md
+          - Services & State Machine: apps/protutechchat/modules.md
+          - LiveKit WebRTC & Desktop IPC: apps/protutechchat/integrations.md
+      - aiVault & Autonomous Agents:
+          - Distributed GPU & OpenWebUI: apps/aivault/index.md
+          - Mem0 Vector Memory & Qdrant RAG: apps/aivault/memory.md
+      - Ecosystem Services:
+          - proxDiscord & Proxmox RPC: apps/services/proxdiscord.md
+          - DNSfilters Automated CI/CD: apps/services/dnsfilters.md
+          - Pelican Gaming Panel & Wings: apps/services/pelican.md
+          - Navidrome & Soulseek Audio: apps/services/media.md
+  - Codebase Deep Dive:
+      - Architecture & File Catalog: code/index.md
+      - Protutech Suite Dashboard:
+          - "src/app.js (Main Controller)": code/protutechdash/app-js.md
+          - "src/security-guard.js (Anti Tamper)": code/protutechdash/security-guard-js.md
+          - "desktop/protutech-bridge.js (Native Bridge)": code/protutechdash/bridge-js.md
+          - "scripts/obfuscate.js (AST Protection)": code/protutechdash/obfuscate-js.md
+      - CS2 Tactical Stratbook:
+          - "TacticsBoard.vue (Tactical Whiteboard)": code/cs2nades/tactics-board-vue.md
+          - "useCanvas.ts (Trajectory Engine)": code/cs2nades/use-canvas-ts.md
+          - "coordinateMapper.ts (Matrix Transform)": code/cs2nades/coordinate-mapper-ts.md
+          - "gameRoomStore.ts (Socket State)": code/cs2nades/game-room-store-ts.md
+          - "server.js (Collaboration Daemon)": code/cs2nades/server-js.md
+      - ProtutechChat & Voice Engine:
+          - "matrix.ts (Federated Client)": code/protutechchat/matrix-ts.md
+          - "livekit.ts (Ultra Low Latency WebRTC)": code/protutechchat/livekit-ts.md
+          - "main.cjs (Electron Native Host)": code/protutechchat/main-cjs.md
+      - aiVault & Vector Memory:
+          - "server.py (Vector RAG Engine)": code/aivault/server-py.md
+          - "docker-compose.yml (Cluster Spec)": code/aivault/docker-compose-yml.md
+      - Security & Key Vaults:
+          - "envelope_manager.js (AES-256-GCM)": code/security/envelope-manager-js.md
+          - "backup_keys_to_all_drives.ps1 (Multidrive Redundancy)": code/security/backup-keys-ps1.md
+      - Proxmox Automation:
+          - "proxmox_rpc.py (Hypervisor Telemetry)": code/infra/proxmox-rpc-py.md
   - Infrastructure & Homelab:
       - Proxmox VE 9.2 Cluster: infra/proxmox.md
       - Cloudflare Zero Trust Ingress: infra/networking.md
-      - Envelope Encryption & Key Vault: infra/security.md
+      - Multidrive Envelope Encryption: infra/security.md
   - Deployment Guides:
       - Proxmox LXC Setup: deploy/proxmox-lxc.md
       - Docker Compose: deploy/docker.md

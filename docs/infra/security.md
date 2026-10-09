@@ -48,7 +48,7 @@ C:\Users\Andre\.protutech\security\
 
 ---
 
-## 🔍 Line-by-Line Cryptographic Code Breakdown
+## 🔍 Line by Line Cryptographic Code Breakdown
 
 ### 1. `envelope_manager.js` — AES-256-GCM & PBKDF2-SHA512 Engine
 
@@ -101,11 +101,11 @@ export function encryptVault(passphrase) {
 7. Processes all plaintext bytes and seals the encryption buffer.
 8. Extracts the 128-bit authentication tag (`authTag`), which guarantees data integrity and tamper detection.
 9. Converts binary salt, IV, and auth tag to hexadecimal strings for safe JSON serialization.
-10. Encodes the final encrypted ciphertext buffer into Base64 for cross-platform portability.
+10. Encodes the final encrypted ciphertext buffer into Base64 for cross platform portability.
 
 ---
 
-### 2. `backup_keys_to_all_drives.ps1` — Zero-Plaintext Multi-Drive Purge & Sync
+### 2. `backup_keys_to_all_drives.ps1` — Zero-Plaintext Multidrive Purge & Sync
 
 ```powershell linenums="1"
 # Target backup paths across all physical and mounted volumes
