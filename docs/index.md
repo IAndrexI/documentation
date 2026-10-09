@@ -66,7 +66,7 @@ graph TD
 
     ---
 
-    Realtime interactive tactical whiteboard, vector trajectory physics engine, and lineup sync for Counter-Strike 2.
+    Realtime interactive tactical whiteboard, <a href="concepts/cubic-bezier-physics.md" class="pt-concept" data-tooltip="Bernstein cubic polynomials calculating ballistic grenade parabolic arcs in 2D space.">vector trajectory physics</a> engine, and lineup sync for Counter-Strike 2.
 
     [▸ View Breakdown](apps/cs2nades/index.md)
 
@@ -74,7 +74,7 @@ graph TD
 
     ---
 
-    Decentralized Matrix communication hub paired with studio grade LiveKit WebRTC audio and Electron host.
+    Decentralized <a href="concepts/matrix-protocol.md" class="pt-concept" data-tooltip="Federated Matrix Client-Server specification with DAG event state resolution.">Matrix communication hub</a> paired with studio grade <a href="concepts/webrtc-sfu.md" class="pt-concept" data-tooltip="Selective Forwarding Unit audio forwarding with zero server-side transcode overhead.">LiveKit WebRTC</a> audio and Electron host.
 
     [▸ View Platform](apps/protutechchat/index.md)
 
@@ -82,7 +82,7 @@ graph TD
 
     ---
 
-    Distributed local LLM pipeline routing containerized OpenWebUI to remote workstation GPU compute with Qdrant vector memory.
+    Distributed local LLM pipeline routing containerized OpenWebUI to remote workstation GPU compute with <a href="concepts/vector-embeddings-hnsw.md" class="pt-concept" data-tooltip="Hierarchical Navigable Small World graphs for sub-millisecond semantic similarity search.">Qdrant vector memory</a>.
 
     [▸ View Pipeline](apps/aivault/index.md)
 
@@ -90,9 +90,17 @@ graph TD
 
     ---
 
-    Double layer AES-256-GCM envelope encryption, client side anti inspection guards, and multidrive backups.
+    Double layer <a href="concepts/envelope-encryption.md" class="pt-concept" data-tooltip="AES-256-GCM authenticated cipher wrapping with PBKDF2 key derivation.">AES-256-GCM envelope encryption</a>, client side anti inspection guards, and multidrive backups.
 
     [▸ View Security Model](infra/security.md)
+
+-   ▸ **Concepts & Formal Standards**
+
+    ---
+
+    Comprehensive reference library covering cryptographic ciphers, physics equations, RFCs, and hypervisor specifications.
+
+    [▸ View Standards Library](concepts/index.md)
 
 -   ▸ **Source Code Deep Dive**
 
@@ -110,8 +118,8 @@ graph TD
 
 | Metric / Layer | Specification |
 | :--- | :--- |
-| **Virtualization** | Proxmox VE 9.2.11 bare metal cluster with unprivileged Debian LXC microservices |
-| **Storage Engine** | ZFS Pooled Storage with atomic snapshots and cross-container bind mounts (`mp0`) |
+| **Virtualization** | Proxmox VE 9.2.11 bare metal cluster with <a href="concepts/proxmox-virtualization.md" class="pt-concept" data-tooltip="Linux cgroups v2 and user namespace isolation mapping root UID 0 to unprivileged UID 100000.">unprivileged Debian LXC</a> microservices |
+| **Storage Engine** | ZFS Pooled Storage with atomic snapshots and cross container bind mounts (`mp0`) |
 | **Remote Ingress** | Cloudflare Argo Zero Trust Tunnels (Zero open public inbound router ports) |
 | **Frontend Frameworks** | Vue.js 3, TypeScript, Vite, Vanilla ESNext, Tailwind CSS |
 | **Backend Daemons** | Node.js Express 5, Python 3 RPC Daemons, Go (Wings), Socket.IO WebSockets |

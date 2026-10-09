@@ -2,7 +2,7 @@
 
 ## ● Low Latency Voice Engine Architecture
 
-Voice and screen sharing in ProtutechChat are powered by **LiveKit SFU**, coupled with deep Electron native hardware bindings to enable studio-quality audio, loopback system sound capture, and hotkey listeners.
+Voice and screen sharing in ProtutechChat are powered by <a href="../../concepts/webrtc-sfu.md" class="pt-concept" data-tooltip="Selective Forwarding Unit audio/video routing without server-side transcoding overhead.">LiveKit SFU</a>, coupled with deep Electron native hardware bindings to enable studio-quality audio, loopback system sound capture, and hotkey listeners.
 
 ```mermaid
 graph TD
@@ -30,7 +30,7 @@ graph TD
         Mic --> AudioDSP --> LiveKitCore
     end
 
-    subgraph SFU["☁️ Homelab LiveKit SFU Cluster"]
+    subgraph SFU["⬡ Homelab LiveKit SFU Cluster"]
         Relay["Selective Forwarding Unit (Sub-30ms Relay)"]
         LiveKitCore <--> Relay
     end
@@ -47,17 +47,17 @@ graph TD
 
 ## § Native Performance Tuning
 
-### 1. Chromium Command-Line Optimization Flags
+### 1. Chromium Command Line Optimization Flags
 The Electron main process (`main.cjs`) overrides default Chromium audio throttling parameters:
 - `autoplay-policy: no-user-gesture-required`: Ensures incoming audio tracks play immediately without requiring an initial mouse click.
 - `enable-features: WebRTCPCM16kAudio,WebRTC-H264WithOpenH264FFmpeg`: Forces native hardware acceleration for H.264 video decoding and low latency audio packet processing.
 - `force-webrtc-ip-handling-policy: default_public_interface_only`: Prevents WebRTC local IP leakage across public internet interfaces.
 
 ### 2. WASAPI System Audio Loopback
-When screen-sharing gameplay, standard browsers only capture microphone audio. ProtutechChat utilizes Electron's `setDisplayMediaRequestHandler` coupled with `audio: 'loopback'` to stream direct game audio alongside 60fps video with zero software lag.
+When screen sharing gameplay, standard browsers only capture microphone audio. ProtutechChat utilizes Electron's `setDisplayMediaRequestHandler` coupled with `audio: 'loopback'` to stream direct game audio alongside 60fps video with zero software lag.
 
 ---
 
 ## [#] Anti Reverse Engineering Boundary
 
-LiveKit token generation, cryptographic room permission scopes, and SFU relay dispatch algorithms are protected behind a private server token gateway. The client requests time-limited JWT tokens with short TTLs (Time to Live). Handshake secrets and TURN/STUN credential pairs are negotiated in memory and purged upon disconnection.
+LiveKit token generation, cryptographic room permission scopes, and SFU relay dispatch algorithms are protected behind a private server token gateway. The client requests time limited JWT tokens with short TTLs (Time to Live). Handshake secrets and TURN/STUN credential pairs are negotiated in memory and purged upon disconnection. For full protocol specifications, see the [**WebRTC SFU Media Engine Reference**](../../concepts/webrtc-sfu.md).

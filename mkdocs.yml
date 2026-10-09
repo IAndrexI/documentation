@@ -119,6 +119,14 @@ nav:
       - Proxmox VE 9.2 Cluster: infra/proxmox.md
       - Cloudflare Zero Trust Ingress: infra/networking.md
       - Multidrive Envelope Encryption: infra/security.md
+  - Concepts & Architectural Standards:
+      - Overview & Standards Library: concepts/index.md
+      - Double Envelope Encryption: concepts/envelope-encryption.md
+      - Cubic Bézier & Ballistics: concepts/cubic-bezier-physics.md
+      - Matrix Federated Protocol: concepts/matrix-protocol.md
+      - WebRTC SFU Media Engine: concepts/webrtc-sfu.md
+      - HNSW Vector Indexing: concepts/vector-embeddings-hnsw.md
+      - Proxmox LXC Virtualization: concepts/proxmox-virtualization.md
   - Deployment Guides:
       - Proxmox LXC Setup: deploy/proxmox-lxc.md
       - Docker Compose: deploy/docker.md

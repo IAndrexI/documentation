@@ -335,3 +335,81 @@
   height: auto !important;
   font-size: 15px !important;
 }
+
+/* ==========================================================================
+   Clickable Concepts with 3-Second Delayed Mini Explanation Tooltip
+   ========================================================================== */
+.pt-concept {
+  position: relative;
+  display: inline-block;
+  color: #00f2fe !important;
+  font-weight: 600;
+  text-decoration: underline dotted rgba(0, 242, 254, 0.7) !important;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.pt-concept:hover {
+  color: #38bdf8 !important;
+  text-decoration-color: #38bdf8 !important;
+}
+
+/* Tooltip popup box - Appears only after hovering for at least 3 seconds */
+.pt-concept::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #0b1120;
+  color: #e2e8f0;
+  border: 1px solid rgba(0, 242, 254, 0.5);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.45;
+  white-space: normal;
+  width: max-content;
+  max-width: 320px;
+  text-align: left;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9), 0 0 16px rgba(0, 242, 254, 0.2);
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 3s,
+              visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1) 3s,
+              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) 3s;
+}
+
+/* Tooltip arrow pointer */
+.pt-concept::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px 6px 0 6px;
+  border-style: solid;
+  border-color: rgba(0, 242, 254, 0.5) transparent transparent transparent;
+  pointer-events: none;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 3s,
+              visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1) 3s;
+}
+
+/* On hover: triggers the 3-second delay timer */
+.pt-concept:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.pt-concept:hover::before {
+  opacity: 1;
+  visibility: visible;
+}

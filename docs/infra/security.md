@@ -1,6 +1,6 @@
 # Security, Envelope Encryption & Key Vault
 
-Protutech implements a layered cryptographic architecture protecting application source code, credentials, and persistent data at rest and in transit across all homelab nodes.
+Protutech implements a layered cryptographic architecture protecting application source code, credentials, and persistent data at rest and in transit across all homelab nodes, based on <a href="../concepts/envelope-encryption.md" class="pt-concept" data-tooltip="AES-256-GCM double envelope encryption with PBKDF2 key derivation adhering to NIST SP 800-38D.">Envelope Encryption</a>.
 
 ---
 
@@ -38,7 +38,7 @@ flowchart TD
 C:\Users\Andre\.protutech\security\
 ├── envelope_manager.js          # Core cryptographic engine (AES-256-GCM + PBKDF2-SHA512)
 ├── unlock_vault.ps1             # Interactive Windows PowerShell unlocker with secure password prompt
-├── backup_keys_to_all_drives.ps1 # Multi-drive synchronization script with SHA-256 verification
+├── backup_keys_to_all_drives.ps1 # Multidrive synchronization script with SHA-256 verification
 ├── protutech_vault_keys.enc     # Authenticated AES-256-GCM encrypted envelope (Safe to store on backups)
 ├── protutech_vault_keys.json    # Local unencrypted JSON vault (Protected on C: drive only)
 ├── protutech_vault_keys.env     # Environment variable format for Docker Compose / daemons

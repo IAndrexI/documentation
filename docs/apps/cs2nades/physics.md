@@ -14,7 +14,7 @@ graph LR
         Config["pos_x, pos_y, scale (e.g. Mirage scale: 5.0)"]
     end
 
-    subgraph PixelTransform["🖼️ 1024x1024 Radar Matrix"]
+    subgraph PixelTransform["[#] 1024x1024 Radar Matrix"]
         PixelX["pixelX = (worldX - pos_x) / scale"]
         PixelY["pixelY = (pos_y - worldY) / scale"]
     end
@@ -79,7 +79,7 @@ Extracted directly from Valve game files (`csgo/resource/overviews/*.txt`):
 
 ## ▸ Parabolic Trajectory Physics (Cubic Bézier Approximation)
 
-In Counter-Strike 2, grenade flight paths follow gravitational projectile motion with drag and bounce energy attenuation. On the 2D tactical board, this flight arc is approximated using cubic Bézier curves:
+In Counter-Strike 2, grenade flight paths follow gravitational projectile motion with drag and bounce energy attenuation. On the 2D tactical board, this flight arc is approximated using <a href="../../concepts/cubic-bezier-physics.md" class="pt-concept" data-tooltip="Bernstein cubic polynomials calculating ballistic grenade parabolic arcs in 2D space.">cubic Bézier curves</a>:
 
 $$B(t) = (1-t)^3 P_0 + 3(1-t)^2 t P_1 + 3(1-t) t^2 P_2 + t^3 P_3 \quad \text{for } t \in [0, 1]$$
 
@@ -88,4 +88,4 @@ Where:
 - $P_1, P_2$: Apex control points elevated perpendicular to the direct travel vector to simulate trajectory height and arc curvature
 - $P_3$: Grenade landing/detonation point $(X_3, Y_3)$
 
-For detailed source code implementation, see [**`useCanvas.ts` Source Breakdown**](../../code/cs2nades/use-canvas-ts.md).
+For detailed source code implementation, see [**`useCanvas.ts` Source Breakdown**](../../code/cs2nades/use-canvas-ts.md) and the comprehensive [**Cubic Bézier Physics Reference**](../../concepts/cubic-bezier-physics.md).
