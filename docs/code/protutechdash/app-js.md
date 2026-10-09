@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/app.js`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** ProtutechDash Application Cockpit
 - **Path:** `protutechdash/src/app.js`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -23,9 +23,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the application launcher from scratch.
 
     ### Architectural Flow
@@ -156,7 +156,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Internal application routing tokens, administrative PIN hashing salts, and local loopback IPC ports are compiled and randomized during release builds using AST obfuscation. Direct filesystem coordinates are not exposed in plaintext bundles.

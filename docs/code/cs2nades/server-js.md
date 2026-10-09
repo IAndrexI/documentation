@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `server/server.js`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** CS2 Tactical Stratbook Collaboration Backend
 - **Path:** `CS2Nades/server/server.js`
@@ -9,7 +9,7 @@
 
 ---
 
-## ✦ What This File Does (Explained Simply)
+## What This File Does (Explained Simply)
 
 Imagine a dedicated communications dispatcher at an esports tournament headquarters:
 1. When players log in, it verifies their passwords with cryptographic hashing (bcrypt) and gives them a digital passport (JWT token).
@@ -18,7 +18,7 @@ Imagine a dedicated communications dispatcher at an esports tournament headquart
 
 ---
 
-## ▪ Key Architectural Sections & Line Breakdown
+## Key Architectural Sections & Line Breakdown
 
 ```mermaid
 graph TD
@@ -109,7 +109,7 @@ function syncLineupFiles(lineups) {
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > JWT token signing seeds, password salt rounds, and internal practice server RCON socket interfaces are secured via runtime environment variables. Direct file writes utilize atomic buffer serialization to prevent partial write vulnerabilities.

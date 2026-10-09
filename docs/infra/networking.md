@@ -8,7 +8,7 @@ All external ingress to Protutech services is routed through Cloudflare Argo Zer
 
 ```mermaid
 flowchart LR
-    Visitor["🌍 Internet Visitor / Client"] --> Edge["Cloudflare Anycast Global Edge"]
+    Visitor["Internet Visitor / Client"] --> Edge["Cloudflare Anycast Global Edge"]
     
     subgraph Cloudflare["Cloudflare Zero Trust Edge"]
         Edge --> WAF["WAF & DDoS Mitigation"]

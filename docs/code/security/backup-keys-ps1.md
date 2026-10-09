@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `backup_keys_to_all_drives.ps1`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** Multidrive Key Cold Storage Pipeline
 - **Path:** `infra/security/backup_keys_to_all_drives.ps1`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full PowerShell parameters, system calls, and line by line breakdown required to understand and recreate the multidrive replication engine from scratch.
 
     ### Multi-Drive Sync & Audit Flow
@@ -81,7 +81,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Backup storage destinations, air gapped offline drive volume serial numbers, and secondary encryption salting passes are managed via administrative credential guard layers. Unencrypted raw keys are never placed onto disk media.

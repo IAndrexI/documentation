@@ -1,12 +1,12 @@
 # CS2 Tactical Stratbook (CS2Nades)
 
-## ◆ Architectural Overview
+## Architectural Overview
 
 **CS2 Tactical Stratbook** is a realtime, multiuser competitive playbook, interactive 2D vector radar, and grenade utility calculator built with Vue 3, Vite, TypeScript, and Socket.IO. It enables team captains and players to choreograph execute smokes, flashes, molotovs, and HE grenades across official Valve Counter-Strike 2 competitive maps.
 
 ```mermaid
 graph TD
-    subgraph ClientLayer["▸ Frontend Client (Vue 3 + Vite + TypeScript)"]
+    subgraph ClientLayer["Frontend Client (Vue 3 + Vite + TypeScript)"]
         UI["Tactical Cockpit UI (Navbar, Modals, Filter Bar)"]
         Pinia["State Orchestration (gameRoomStore, lineupStore, mapStore)"]
         CanvasEngine["Canvas Trajectory Engine (useCanvas.ts)"]
@@ -17,12 +17,12 @@ graph TD
         Pinia --> CoordMapper
     end
 
-    subgraph TransportLayer["▸ Realtime Bidirectional Sync"]
+    subgraph TransportLayer["Realtime Bidirectional Sync"]
         ClientSocket["Socket.IO Client WebSocket Connection"]
         Pinia <--> ClientSocket
     end
 
-    subgraph ServerLayer["▸ Backend Microservice (Node.js Express + Socket.IO)"]
+    subgraph ServerLayer["Backend Microservice (Node.js Express + Socket.IO)"]
         ServerSocket["Socket.IO Server (server/server.js)"]
         RoomState["In Memory Room State & Drawing Synchronizer"]
         LineupStore["Atomic JSON File Storage (data/lineups.json)"]
@@ -35,7 +35,7 @@ graph TD
 
 ---
 
-## ▸ Key Engineering Highlights
+## Key Engineering Highlights
 
 | Module / System | Technology | Description |
 | :--- | :--- | :--- |
@@ -47,7 +47,7 @@ graph TD
 
 ---
 
-## ▸ Navigation & Subguides
+## Navigation & Subguides
 
 - [**Vue 3 & Pinia Hierarchy**](components.md): Component breakdown, modals, views, and store data contracts.
 - [**Vector Physics & Radar Calibration**](physics.md): Mathematical formulas for world-to-minimap conversion and cubic Bézier curve calculation.

@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `client/electron/main.cjs`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** ProtutechChat Native Operating System Shell
 - **Path:** `discordapi/client/electron/main.cjs`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -23,9 +23,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the native Electron desktop shell from scratch.
 
     ### Window Lifecycle & IPC Pipeline
@@ -103,7 +103,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Native context bridge interfaces, preload script IPC channels (`ipcRenderer.invoke`), and cryptographic token storage paths are compiled into secure runtime bundles. Application signing certificates verify host process integrity.

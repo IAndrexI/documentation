@@ -1,12 +1,12 @@
 # ProtutechChat Unified Communications Engine
 
-## ◆ High-Level Overview
+## High-Level Overview
 
 **ProtutechChat** is an enterprise-grade, self hosted communications platform engineered to provide the fluid visual experience of Discord paired with the sovereignty and decentralized security of the **Matrix Protocol** and **LiveKit WebRTC**. 
 
 ```mermaid
 graph TD
-    subgraph ClientHost["💻 ProtutechChat Desktop & Web Application"]
+    subgraph ClientHost["ProtutechChat Desktop & Web Application"]
         UI["React 18 + TypeScript GUI (Server Rail, Channel Sidebar, Chat Area)"]
         MatrixSvc["MatrixClientService (Federated Chat & State Machine)"]
         VoiceSvc["LiveKitVoiceService (Ultra-Low Latency Audio/Video)"]
@@ -17,11 +17,11 @@ graph TD
         UI <--> ElectronHost
     end
 
-    subgraph EdgeIngress["[#] Cloudflare Zero Trust Ingress Gateway"]
+    subgraph EdgeIngress["Cloudflare Zero Trust Ingress Gateway"]
         CF_WSS["WSS / HTTPS Edge Pipeline (chat.protutech.vip)"]
     end
 
-    subgraph BackendCluster["▸ Self Hosted Proxmox Cluster"]
+    subgraph BackendCluster["Self Hosted Proxmox Cluster"]
         Synapse["Matrix Homeserver (Decentralized State & E2EE)"]
         LiveKitServer["LiveKit SFU (Selective Forwarding Unit)"]
         AuthBridge["Internal Auth & Token Dispenser API"]
@@ -38,7 +38,7 @@ graph TD
 
 ---
 
-## ✦ How It Works (For Beginners)
+## How It Works (For Beginners)
 
 Imagine conventional chat platforms like a centralized private apartment building where the landlord owns all the mailboxes, listens to hallways, and can lock the doors at any time.
 
@@ -48,14 +48,14 @@ ProtutechChat operates like an encrypted diplomatic courier service:
 
 ---
 
-## [#] Proprietary Architecture & Reverse-Engineering Protection
+## Proprietary Architecture & Reverse-Engineering Protection
 
 > [!NOTE] Obfuscated Implementation Boundary
 > To preserve proprietary infrastructure resilience and prevent unauthorized network probing, external endpoints and cryptographic handshake salts are abstracted via an internal dynamic negotiation proxy. Direct host addresses, private token seeds, and SFU routing topologies utilize ephemeral session tickets rather than static credentials.
 
 ---
 
-## ▸ Navigation & Subguides
+## Navigation & Subguides
 
 - [**Services & State Machine**](modules.md): Long-polling event loop, room caching, and state synchronization.
 - [**LiveKit WebRTC & Desktop IPC**](integrations.md): Low-latency audio tuning, loopback desktop audio streaming, and Electron hooks.

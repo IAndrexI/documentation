@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/services/livekit.ts`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** ProtutechChat Ultra Low Latency Voice Subsystem
 - **Path:** `discordapi/client/src/services/livekit.ts`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the WebRTC voice engine from scratch.
 
     ### Voice Subscription Flow
@@ -84,7 +84,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > LiveKit server administrative tokens, STUN/TURN ICE candidate relay addresses, and WebRTC encryption keys are negotiated via authenticated backend endpoints. Raw token signing secrets are never exposed on client runtimes.

@@ -1,6 +1,6 @@
 # Automated Proxmox & GitHub Sync Pipeline
 
-## ⬡ System Architecture
+## System Architecture
 
 This pipeline automatically keeps your documentation website updated whenever a new LXC container or VM is created on Proxmox VE, or when new repositories and commits are pushed to GitHub.
 
@@ -38,7 +38,7 @@ graph TD
 
 ---
 
-## ⬡ Setup on Proxmox VE (Local Cron or Systemd Timer)
+## Setup on Proxmox VE (Local Cron or Systemd Timer)
 
 ### Method A: Automated Systemd Timer on Proxmox Host
 
@@ -89,7 +89,7 @@ graph TD
 
 ---
 
-## ⬡ Proxmox Hookscript (Instant Trigger on Container Creation)
+## Proxmox Hookscript (Instant Trigger on Container Creation)
 
 To update the documentation immediately when a container is created or started:
 
@@ -110,7 +110,7 @@ Now anytime a container boots, the live inventory page is automatically refreshe
 
 ---
 
-## ⬡ GitHub Actions Automated Sync
+## GitHub Actions Automated Sync
 
 The repository includes a ready to use GitHub Actions workflow at [`.github/workflows/auto-update-docs.yml`](https://github.com/IAndrexI/documentation/blob/main/.github/workflows/auto-update-docs.yml).
 

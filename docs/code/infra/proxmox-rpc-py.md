@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `proxmox_rpc.py`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** Proxmox Hypervisor Telemetry & Discord RPC
 - **Path:** `apps/proxdiscord/proxmox_rpc.py`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full Python AsyncIO architecture, REST endpoints, and line by line breakdown required to understand and recreate the Proxmox Discord RPC daemon from scratch.
 
     ### Telemetry Polling Loop
@@ -92,7 +92,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Proxmox API tokens, cluster node names, and private network addresses are injected through encrypted environment configurations. Error handling logic applies jittered exponential backoff to prevent API rate limiting.

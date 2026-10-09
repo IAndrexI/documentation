@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/composables/useCanvas.ts`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** CS2 Tactical Stratbook Trajectory Drawing Engine
 - **Path:** `CS2Nades/src/composables/useCanvas.ts`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full mathematical formulas, type definitions, and line by line breakdown required to understand and recreate the vector canvas engine from scratch.
 
     ### Trajectory Calculation & Render Pipeline
@@ -133,7 +133,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Throw tick interpolation rates, bounce collision restitution constants, and air resistance damping coefficients are calculated via dynamic runtime matrices. Anti aliasing filters preserve rendering performance across high DPI displays.

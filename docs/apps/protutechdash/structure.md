@@ -1,31 +1,31 @@
 # ProtutechDash Subfolder & Module Anatomy
 
-## ▸ Exhaustive Directory Hierarchy
+## Exhaustive Directory Hierarchy
 
 The repository is structured into distinct functional domains, isolating browser presentation, native host bindings, build tooling, and static mock environments:
 
 ```
 protutechdash/
-├── 📁 .github/
-│   └── 📁 workflows/
+├── .github/
+│   └── workflows/
 │       └── deploy.yml              # Automated GitHub Pages CI/CD pipeline
-├── 📁 assets/
+├── assets/
 │   └── protutech-logo.svg          # Core SVG vector branding asset
-├── 📁 data/
+├── data/
 │   └── default-apps.json           # Default service registry (ports, URLs, icons, categories)
-├── 📁 desktop/
+├── desktop/
 │   ├── launch-helper.bat           # Silent background runner for bridge Node process
 │   ├── protutech-bridge.js         # HTTP/WebSocket daemon executing local native binaries
 │   └── protutech-protocol.bat      # Windows Registry helper to register protutech:// URI scheme
-├── 📁 dist/
+├── dist/
 │   ├── app.min.js                  # Production obfuscated AST build of src/app.js
 │   └── security-guard.min.js       # Production obfuscated AST build of src/security-guard.js
-├── 📁 embed/
+├── embed/
 │   ├── demo-app.html               # Isolated iframe test fixture for cross-origin security
 │   └── protutech-launcher.js       # Embeddable script tag allowing third-party sites to open apps
-├── 📁 scripts/
+├── scripts/
 │   └── obfuscate.js                # Build script using javascript-obfuscator for production
-├── 📁 src/
+├── src/
 │   ├── app.js                      # Core frontend application state & DOM rendering logic
 │   ├── security-guard.js           # Anti-devtools, keyboard lockout & tamper detection
 │   └── styles.css                  # Apple Obsidian glassmorphic design system tokens
@@ -37,7 +37,7 @@ protutechdash/
 
 ---
 
-## ▪ Module Responsibilities by Subfolder
+## Module Responsibilities by Subfolder
 
 ### 1. `src/` – Application Core & User Experience
 The primary client runtime executing in the browser:

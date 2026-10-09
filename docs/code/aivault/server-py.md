@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `aiVault/server.py`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** aiVault Episodic Vector Memory Gateway
 - **Path:** `aiVault/server.py`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the vector memory server from scratch.
 
     ### Vector Ingestion & Search Pipeline
@@ -112,7 +112,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Internal similarity score thresholds, embedding quantization models, and semantic clustering algorithms are isolated within the private container network. External clients cannot directly inspect low level vector coordinates or internal Qdrant collections.

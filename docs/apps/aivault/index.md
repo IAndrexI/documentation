@@ -1,20 +1,20 @@
 # aiVault & Distributed Local AI Compute
 
-## ◆ High-Level Overview
+## High-Level Overview
 
 **aiVault** is a hybrid private AI compute cluster designed to host sovereign Large Language Models (LLMs) and autonomous memory systems with 100% data privacy. It interconnects containerized frontends running on Proxmox VE with a dedicated bare metal GPU workstation (NVIDIA RTX hardware) over a dedicated 2.5GbE LAN backplane.
 
 ```mermaid
 graph TD
-    User["▸ User / Agent Application"] --> WebUI["Open WebUI (Chat Cockpit)"]
+    User["User / Agent Application"] --> WebUI["Open WebUI (Chat Cockpit)"]
     
-    subgraph ProxmoxCluster["▸ Proxmox Hypervisor (LXC 104)"]
+    subgraph ProxmoxCluster["Proxmox Hypervisor (LXC 104)"]
         WebUI <--> Mem0Service["aiVault Mem0 Server (server.py)"]
         Mem0Service <--> QdrantDB["Qdrant Vector Database (Port 6333)"]
         WebUI <--> LocalOllama["Fallback Container Ollama"]
     end
 
-    subgraph HardwareNode["▸ Dedicated Workstation Node"]
+    subgraph HardwareNode["Dedicated Workstation Node"]
         Mem0Service -->|High Speed 2.5GbE LAN| WorkstationGPU["Primary Ollama GPU Engine (Port 11434)"]
         WebUI -->|Low Latency LAN Stream| WorkstationGPU
         WorkstationGPU --> CUDA["CUDA Tensor Cores (Llama 3.2, Dolphin, Nomic Embed)"]
@@ -23,7 +23,7 @@ graph TD
 
 ---
 
-## ✦ How It Works (For Beginners)
+## How It Works (For Beginners)
 
 Most people use cloud AI by sending private questions over the internet to remote corporate data centers.
 
@@ -34,14 +34,14 @@ aiVault does all the thinking inside your own house:
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Compute Architecture Shielding
 > Internal routing topology, memory vector dimensionality, dynamic chunking thresholds, and private LAN IP addresses are abstracted through container network bridges. External API queries interact with generalized gateway contracts rather than direct CUDA execution handles.
 
 ---
 
-## ▸ Navigation & Subguides
+## Navigation & Subguides
 
 - [**Mem0 Vector Memory & Qdrant RAG**](memory.md): Long-term cognitive recall, semantic similarity search, and automated fact extraction.
 - [**Source Code: `server.py`**](../../code/aivault/server-py.md): Line-by-line breakdown of the Mem0 FastAPI vector gateway.

@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `aiVault/docker-compose.yml`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** aiVault Distributed Container Cluster
 - **Path:** `aiVault/docker-compose.yml`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, service definitions, and line by line breakdown required to understand and recreate the multi container AI cluster from scratch.
 
     ### Multi-Container Topology
@@ -100,7 +100,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Internal subnet masks, hardware MAC addresses, and physical workstation IP coordinates are abstracted through internal container DNS resolution. Container security profiles prevent privilege escalation to the Proxmox host kernel.

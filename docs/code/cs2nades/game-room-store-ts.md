@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/stores/gameRoomStore.ts`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** Pinia Realtime Room & Collaboration Store
 - **Path:** `CS2Nades/src/stores/gameRoomStore.ts`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the Pinia collaboration store from scratch.
 
     ### Lifecycle & Event Dispatch
@@ -137,7 +137,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Room token authentication hashes and peer verification handshakes use transient server secrets. Room join identifiers are protected with cryptographic time signatures, preventing unauthorized bots from brute forcing private tactical squad rooms.

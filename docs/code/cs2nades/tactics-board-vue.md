@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/components/tactics/TacticsBoard.vue`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** CS2 Tactical Stratbook Whiteboard Engine
 - **Path:** `CS2Nades/src/components/tactics/TacticsBoard.vue`
@@ -9,7 +9,7 @@
 
 ---
 
-## ✦ What This File Does (Explained Simply)
+## What This File Does (Explained Simply)
 
 Imagine an interactive digital chalkboard in a sports team locker room before an important game:
 1. The coach selects a map (like Mirage or Inferno).
@@ -19,7 +19,7 @@ Imagine an interactive digital chalkboard in a sports team locker room before an
 
 ---
 
-## ▪ Key Architectural Sections & Line Breakdown
+## Key Architectural Sections & Line Breakdown
 
 ```mermaid
 graph TD
@@ -99,7 +99,7 @@ function executeMapSwitch(targetMapId: string) {
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Mathematical vector smoothing algorithms, end to end message encryption keys (`generateConversationSecret`), and real coordinate interpolation filters are processed in memory. Server side room authority validation prevents unauthorized privilege escalation.

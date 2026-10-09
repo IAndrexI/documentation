@@ -4,7 +4,7 @@ Protutech implements a layered cryptographic architecture protecting application
 
 ---
 
-## ⬡ Envelope Encryption Architecture (Key Wrapping)
+## Envelope Encryption Architecture (Key Wrapping)
 
 ```mermaid
 flowchart TD
@@ -32,7 +32,7 @@ flowchart TD
 
 ---
 
-## ▸ Vault File Structure & Responsibilities
+## Vault File Structure & Responsibilities
 
 ```text
 C:\Users\Andre\.protutech\security\
@@ -48,7 +48,7 @@ C:\Users\Andre\.protutech\security\
 
 ---
 
-## ▪ Line by Line Cryptographic Code Breakdown
+## Line by Line Cryptographic Code Breakdown
 
 ### 1. `envelope_manager.js` — AES-256-GCM & PBKDF2-SHA512 Engine
 
@@ -134,7 +134,7 @@ foreach ($target in $TargetDrives) {
         $srcHash = (Get-FileHash -Path $encSrc -Algorithm SHA256).Hash
         $destHash = (Get-FileHash -Path $encDest -Algorithm SHA256).Hash
         if ($srcHash -eq $destHash) {
-            Write-Host "✓ Drive $($target.Drive) Verified: SHA-256 Match" -ForegroundColor Green # (3)!
+            Write-Host "Drive $($target.Drive) Verified: SHA-256 Match" -ForegroundColor Green # (3)!
         }
     }
 }

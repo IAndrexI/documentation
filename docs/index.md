@@ -6,7 +6,7 @@ This documentation site provides deep architectural breakdowns, system topologie
 
 ---
 
-## ⬡ Ecosystem Architecture & Topology
+## Ecosystem Architecture & Topology
 
 <img src="assets/system-topology.svg" alt="Protutech Enterprise Homelab Architecture" class="overview-architecture-img" />
 
@@ -50,71 +50,71 @@ graph TD
 
 ---
 
-## ⬡ Quick Navigation
+## Quick Navigation
 
 <div class="grid cards" markdown>
 
--   ▸ **Protutech Suite Dashboard**
+-   **Protutech Suite Dashboard**
 
     ---
 
     Unified cross platform Adobe Creative Cloud style launcher, periodic table cockpit, and custom protocol dispatcher.
 
-    [▸ View Architecture](apps/protutechdash/index.md)
+    [View Architecture](apps/protutechdash/index.md)
 
--   ▸ **CS2 Tactical Stratbook**
+-   **CS2 Tactical Stratbook**
 
     ---
 
     Realtime interactive tactical whiteboard, <a href="concepts/cubic-bezier-physics.md" class="pt-concept" data-tooltip="Bernstein cubic polynomials calculating ballistic grenade parabolic arcs in 2D space.">vector trajectory physics</a> engine, and lineup sync for Counter-Strike 2.
 
-    [▸ View Breakdown](apps/cs2nades/index.md)
+    [View Breakdown](apps/cs2nades/index.md)
 
--   ▸ **ProtutechChat & Voice Engine**
+-   **ProtutechChat & Voice Engine**
 
     ---
 
     Decentralized <a href="concepts/matrix-protocol.md" class="pt-concept" data-tooltip="Federated Matrix Client-Server specification with DAG event state resolution.">Matrix communication hub</a> paired with studio grade <a href="concepts/webrtc-sfu.md" class="pt-concept" data-tooltip="Selective Forwarding Unit audio forwarding with zero server-side transcode overhead.">LiveKit WebRTC</a> audio and Electron host.
 
-    [▸ View Platform](apps/protutechchat/index.md)
+    [View Platform](apps/protutechchat/index.md)
 
--   ▸ **aiVault & Ollama Pipeline**
+-   **aiVault & Ollama Pipeline**
 
     ---
 
     Distributed local LLM pipeline routing containerized OpenWebUI to remote workstation GPU compute with <a href="concepts/vector-embeddings-hnsw.md" class="pt-concept" data-tooltip="Hierarchical Navigable Small World graphs for sub-millisecond semantic similarity search.">Qdrant vector memory</a>.
 
-    [▸ View Pipeline](apps/aivault/index.md)
+    [View Pipeline](apps/aivault/index.md)
 
--   ▸ **Security & Envelope Encryption**
+-   **Security & Envelope Encryption**
 
     ---
 
     Double layer <a href="concepts/envelope-encryption.md" class="pt-concept" data-tooltip="AES-256-GCM authenticated cipher wrapping with PBKDF2 key derivation.">AES-256-GCM envelope encryption</a>, client side anti inspection guards, and multidrive backups.
 
-    [▸ View Security Model](infra/security.md)
+    [View Security Model](infra/security.md)
 
--   ▸ **Concepts & Formal Standards**
+-   **Concepts & Formal Standards**
 
     ---
 
     Comprehensive reference library covering cryptographic ciphers, physics equations, RFCs, and hypervisor specifications.
 
-    [▸ View Standards Library](concepts/index.md)
+    [View Standards Library](concepts/index.md)
 
--   ▸ **Source Code Deep Dive**
+-   **Source Code Deep Dive**
 
     ---
 
     File by file technical walkthroughs explaining key lines of code, algorithms, and protective architecture.
 
-    [▸ Explore Source Files](code/index.md)
+    [Explore Source Files](code/index.md)
 
 </div>
 
 ---
 
-## ⬡ Core Technical Specifications
+## Core Technical Specifications
 
 | Metric / Layer | Specification |
 | :--- | :--- |

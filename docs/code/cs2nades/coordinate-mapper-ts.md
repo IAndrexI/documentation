@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/utils/coordinateMapper.ts`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** Valve Source Engine Space Transformer
 - **Path:** `CS2Nades/src/utils/coordinateMapper.ts`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -23,9 +23,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full mathematical formulas, type definitions, and line by line breakdown required to understand and recreate the coordinate mapping engine from scratch.
 
     ### Transformation Geometry
@@ -143,7 +143,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Precision Damping
 > Micro angle orientation matrices and proprietary height plane colliders are computed using dynamic elevation offsets. Teleport vector outputs incorporate randomized epsilon jitter when generating practice binds to prevent pattern matching by server side anti cheat routines.

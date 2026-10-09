@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `envelope_manager.js`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** Protutech Enterprise Cryptographic Vault
 - **Path:** `infra/security/envelope_manager.js`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full cryptographic algorithms, parameters, and line by line breakdown required to understand and recreate the envelope encryption engine from scratch.
 
     ### Cryptographic Pipeline
@@ -92,7 +92,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Vault key derivation functions utilize secret salting layers and hardware bound CPU timing delays. Envelope parameters and multi drive synchronization tokens are protected against cold boot physical extraction.

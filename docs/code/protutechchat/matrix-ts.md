@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `src/services/matrix.ts`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** ProtutechChat Federated Messaging & State Engine
 - **Path:** `discordapi/client/src/services/matrix.ts`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -23,9 +23,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the Matrix communications engine from scratch.
 
     ### Client State Flow & Long Polling Loop
@@ -118,7 +118,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Internal state synchronization batch tokens, presence rate limiters, and end to end encrypted room key exchange parameters are negotiated inside protected service modules. Homeserver network boundaries utilize abstracted edge routing.

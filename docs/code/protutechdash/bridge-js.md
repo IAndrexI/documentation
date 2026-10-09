@@ -1,6 +1,6 @@
 # Source Code Deep Dive: `desktop/protutech-bridge.js`
 
-## ▪ File Metadata
+## File Metadata
 
 - **Subsystem:** Protutech Desktop Bridge Daemon
 - **Path:** `protutechdash/desktop/protutech-bridge.js`
@@ -9,7 +9,7 @@
 
 ---
 
-## ⬡ General Concept & Architecture (Summarized Version)
+## General Concept & Architecture (Summarized Version)
 
 ??? summary "Optional Quick Summary: How It Works"
     **The Big Picture:**
@@ -22,9 +22,9 @@
 
 ---
 
-## ⬡ Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
+## Detailed Section: Exact Line by Line Analysis & Re-creation Blueprint
 
-???+ note "🔎 Complete Technical Analysis & Re-creation Blueprint"
+???+ note "Complete Technical Analysis & Re-creation Blueprint"
     This section provides the full architectural details, data structures, and line by line breakdown required to understand and recreate the desktop companion bridge from scratch.
 
     ### Architectural Flow
@@ -146,7 +146,7 @@
 
 ---
 
-## [#] Anti Reverse Engineering Boundary
+## Anti Reverse Engineering Boundary
 
 > [!NOTE] Implementation Abstraction
 > Internal executable path resolution uses aliased dictionary lookups. Direct command arguments are sanitized against injection characters (`&`, `|`, `;`, `` ` ``) before process execution.

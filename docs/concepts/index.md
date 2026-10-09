@@ -16,7 +16,7 @@ Every concept listed here links directly to its standalone deep dive page. Throu
     
     Authentication tag validation, per-secret Data Encryption Keys (DEKs), Key Encryption Keys (KEKs), and tamper-evident storage using NIST SP 800-38D standards.
     
-    [Read Envelope Encryption Deep Dive ▸](envelope-encryption.md)
+    [Read Envelope Encryption Deep Dive](envelope-encryption.md)
 
 -   __Ballistic Trajectory & Bézier Physics__
     
@@ -24,7 +24,7 @@ Every concept listed here links directly to its standalone deep dive page. Throu
     
     Mathematical interpolation of grenade throws, Bernstein cubic polynomials, Hammer unit projection matrices, and collision vector estimation in CS2.
     
-    [Read Ballistics & Physics Deep Dive ▸](cubic-bezier-physics.md)
+    [Read Ballistics & Physics Deep Dive](cubic-bezier-physics.md)
 
 -   __Matrix Federated Protocol & State Engines__
     
@@ -32,7 +32,7 @@ Every concept listed here links directly to its standalone deep dive page. Throu
     
     Decentralized event graphs, State Resolution v2 DAG sorting, MSC3575 Sliding Sync subscriptions, and immutable `mxc://` content addressable storage.
     
-    [Read Matrix Protocol Deep Dive ▸](matrix-protocol.md)
+    [Read Matrix Protocol Deep Dive](matrix-protocol.md)
 
 -   __WebRTC Selective Forwarding Units (SFU)__
     
@@ -40,7 +40,7 @@ Every concept listed here links directly to its standalone deep dive page. Throu
     
     Selective audio/video forwarding, zero-transcode forwarding topologies, adaptive dynacast streams, and Windows WASAPI low-latency loopback audio capture.
     
-    [Read WebRTC & SFU Deep Dive ▸](webrtc-sfu.md)
+    [Read WebRTC & SFU Deep Dive](webrtc-sfu.md)
 
 -   __HNSW Graphs & Vector Embeddings__
     
@@ -48,7 +48,7 @@ Every concept listed here links directly to its standalone deep dive page. Throu
     
     Hierarchical Navigable Small World geometric graphs, cosine metric distance calculations, Qdrant payload filtering, and sub-millisecond nearest neighbor search.
     
-    [Read HNSW & Embeddings Deep Dive ▸](vector-embeddings-hnsw.md)
+    [Read HNSW & Embeddings Deep Dive](vector-embeddings-hnsw.md)
 
 -   __LXC Namespaces & Hypervisor Isolation__
     
@@ -56,7 +56,7 @@ Every concept listed here links directly to its standalone deep dive page. Throu
     
     Unprivileged container isolation, UID/GID remapping (`UID 0 -> 100000`), Linux cgroups v2 resource accounting, and ZFS recordsize tuning on Proxmox VE.
     
-    [Read Proxmox Virtualization Deep Dive ▸](proxmox-virtualization.md)
+    [Read Proxmox Virtualization Deep Dive](proxmox-virtualization.md)
 
 </div>
 
