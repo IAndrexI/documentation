@@ -126,6 +126,7 @@ nav:
           - "proxmox_rpc.py (Hypervisor Telemetry)": code/infra/proxmox-rpc-py.md
   - Infrastructure & Homelab:
       - Proxmox VE 9.2 Cluster: infra/proxmox.md
+      - Live Proxmox Inventory: infra/proxmox-live-inventory.md
       - Cloudflare Zero Trust Ingress: infra/networking.md
       - Multidrive Envelope Encryption: infra/security.md
   - Concepts & Architectural Standards:

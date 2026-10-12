@@ -14,7 +14,7 @@ import urllib.request
 import urllib.error
 import subprocess
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 
 # Root paths
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -35,7 +35,7 @@ GITHUB_USER = os.getenv("GITHUB_USER", "IAndrexI")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 
 def log(msg):
-    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S UTC")
+    timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
     print(f"[{timestamp}] [AutoUpdate] {msg}", flush=True)
 
 def query_proxmox_containers():
@@ -100,7 +100,7 @@ def update_cluster_manifest(containers, repos):
         "# Proxmox Cluster Live Container Inventory",
         "",
         "This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.",
-        f"**Last Sync Timestamp:** `{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')} UTC`",
+        f"**Last Sync Timestamp:** `{datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')} UTC`",
         "",
         "---",
         "",
