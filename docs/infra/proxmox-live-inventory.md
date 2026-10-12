@@ -1,7 +1,7 @@
 # Proxmox Cluster Live Container Inventory
 
 This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.
-**Last Sync Timestamp:** `2026-10-12 03:18:58 UTC`
+**Last Sync Timestamp:** `2026-10-12 13:53:53 UTC`
 
 ---
 
@@ -17,8 +17,8 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 
 | Repository | Description | Last Updated | Default Branch |
 | :--- | :--- | :--- | :--- |
+| [DNSfilters](https://github.com/IAndrexI/DNSfilters) | DNS blocklists for AdGuard Home with automated GitHub Actions compilation. | `2026-10-12` | `main` |
 | [documentation](https://github.com/IAndrexI/documentation) | Homelab service component | `2026-10-12` | `main` |
-| [DNSfilters](https://github.com/IAndrexI/DNSfilters) | DNS blocklists for AdGuard Home with automated GitHub Actions compilation. | `2026-10-11` | `main` |
 | [SC](https://github.com/IAndrexI/SC) | Homelab service component | `2026-10-10` | `main` |
 | [proxDiscord](https://github.com/IAndrexI/proxDiscord) | rpcDiscord | `2026-10-09` | `main` |
 | [General-projects](https://github.com/IAndrexI/General-projects) | First basic website Html+css | `2026-10-09` | `main` |
