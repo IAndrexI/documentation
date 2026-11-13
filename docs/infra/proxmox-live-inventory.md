@@ -1,7 +1,7 @@
 # Proxmox Cluster Live Container Inventory
 
 This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.
-**Last Sync Timestamp:** `2026-11-13 04:07:22 UTC`
+**Last Sync Timestamp:** `2026-11-13 13:38:44 UTC`
 
 ---
 
@@ -17,6 +17,7 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 
 | Repository | Description | Last Updated | Default Branch |
 | :--- | :--- | :--- | :--- |
+| [kryptexsleep](https://github.com/IAndrexI/kryptexsleep) | Homelab service component | `2026-11-13` | `main` |
 | [documentation](https://github.com/IAndrexI/documentation) | Homelab service component | `2026-11-12` | `main` |
 | [DNSfilters](https://github.com/IAndrexI/DNSfilters) | DNS blocklists for AdGuard Home with automated GitHub Actions compilation. | `2026-11-12` | `main` |
 | [dropsClaim](https://github.com/IAndrexI/dropsClaim) | Homelab service component | `2026-11-10` | `main` |
@@ -31,4 +32,3 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 | [aiVault](https://github.com/IAndrexI/aiVault) | Homelab service component | `2026-10-08` | `main` |
 | [windowsDesktopDisableBind](https://github.com/IAndrexI/windowsDesktopDisableBind) | Disable the control windows D binding from creating a new  | `2026-09-23` | `main` |
 | [habitica](https://github.com/IAndrexI/habitica) | A habit tracker app which treats your goals like a Role Playing Game. | `2026-08-22` | `develop` |
-| [Voron2.4](https://github.com/IAndrexI/Voron2.4) | Printer.cfg | `2026-01-26` | `main` |
