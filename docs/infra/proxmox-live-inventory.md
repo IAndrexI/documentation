@@ -1,7 +1,7 @@
 # Proxmox Cluster Live Container Inventory
 
 This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.
-**Last Sync Timestamp:** `2026-11-14 04:04:07 UTC`
+**Last Sync Timestamp:** `2026-11-14 12:43:02 UTC`
 
 ---
 
@@ -17,6 +17,7 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 
 | Repository | Description | Last Updated | Default Branch |
 | :--- | :--- | :--- | :--- |
+| [mcpackconvert](https://github.com/IAndrexI/mcpackconvert) | Homelab service component | `2026-11-14` | `main` |
 | [kryptexsleep](https://github.com/IAndrexI/kryptexsleep) | Homelab service component | `2026-11-13` | `main` |
 | [documentation](https://github.com/IAndrexI/documentation) | Homelab service component | `2026-11-12` | `main` |
 | [DNSfilters](https://github.com/IAndrexI/DNSfilters) | DNS blocklists for AdGuard Home with automated GitHub Actions compilation. | `2026-11-12` | `main` |
@@ -31,4 +32,3 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 | [CS2Nades](https://github.com/IAndrexI/CS2Nades) | Homelab service component | `2026-10-08` | `main` |
 | [aiVault](https://github.com/IAndrexI/aiVault) | Homelab service component | `2026-10-08` | `main` |
 | [windowsDesktopDisableBind](https://github.com/IAndrexI/windowsDesktopDisableBind) | Disable the control windows D binding from creating a new  | `2026-09-23` | `main` |
-| [habitica](https://github.com/IAndrexI/habitica) | A habit tracker app which treats your goals like a Role Playing Game. | `2026-08-22` | `develop` |
