@@ -1,7 +1,7 @@
 # Proxmox Cluster Live Container Inventory
 
 This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.
-**Last Sync Timestamp:** `2026-11-15 13:09:46 UTC`
+**Last Sync Timestamp:** `2026-11-15 22:17:25 UTC`
 
 ---
 
