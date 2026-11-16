@@ -1,7 +1,7 @@
 # Proxmox Cluster Live Container Inventory
 
 This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.
-**Last Sync Timestamp:** `2026-11-15 22:17:25 UTC`
+**Last Sync Timestamp:** `2026-11-16 03:50:35 UTC`
 
 ---
 
@@ -17,6 +17,7 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 
 | Repository | Description | Last Updated | Default Branch |
 | :--- | :--- | :--- | :--- |
+| [notescanner](https://github.com/IAndrexI/notescanner) | Homelab service component | `2026-11-16` | `main` |
 | [mcpackconvert](https://github.com/IAndrexI/mcpackconvert) | Homelab service component | `2026-11-14` | `main` |
 | [kryptexsleep](https://github.com/IAndrexI/kryptexsleep) | Homelab service component | `2026-11-13` | `main` |
 | [documentation](https://github.com/IAndrexI/documentation) | Homelab service component | `2026-11-12` | `main` |
@@ -31,4 +32,3 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 | [discordapi](https://github.com/IAndrexI/discordapi) | Homelab service component | `2026-10-08` | `main` |
 | [CS2Nades](https://github.com/IAndrexI/CS2Nades) | Homelab service component | `2026-10-08` | `main` |
 | [aiVault](https://github.com/IAndrexI/aiVault) | Homelab service component | `2026-10-08` | `main` |
-| [windowsDesktopDisableBind](https://github.com/IAndrexI/windowsDesktopDisableBind) | Disable the control windows D binding from creating a new  | `2026-09-23` | `main` |
