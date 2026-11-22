@@ -1,7 +1,7 @@
 # Proxmox Cluster Live Container Inventory
 
 This inventory page is automatically synchronized with Proxmox VE hypervisor state and GitHub.
-**Last Sync Timestamp:** `2026-11-21 22:35:45 UTC`
+**Last Sync Timestamp:** `2026-11-22 04:03:51 UTC`
 
 ---
 
@@ -17,6 +17,7 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 
 | Repository | Description | Last Updated | Default Branch |
 | :--- | :--- | :--- | :--- |
+| [ytmod](https://github.com/IAndrexI/ytmod) | Homelab service component | `2026-11-22` | `main` |
 | [darkextension](https://github.com/IAndrexI/darkextension) | Homelab service component | `2026-11-20` | `main` |
 | [discordapi](https://github.com/IAndrexI/discordapi) | Homelab service component | `2026-11-19` | `main` |
 | [notescanner](https://github.com/IAndrexI/notescanner) | Homelab service component | `2026-11-16` | `main` |
@@ -31,4 +32,3 @@ This inventory page is automatically synchronized with Proxmox VE hypervisor sta
 | [proxDiscord](https://github.com/IAndrexI/proxDiscord) | rpcDiscord | `2026-10-09` | `main` |
 | [General-projects](https://github.com/IAndrexI/General-projects) | First basic website Html+css | `2026-10-09` | `main` |
 | [SoulSeek](https://github.com/IAndrexI/SoulSeek) | Soulseek auto downloader | `2026-10-08` | `main` |
-| [CS2Nades](https://github.com/IAndrexI/CS2Nades) | Homelab service component | `2026-10-08` | `main` |
